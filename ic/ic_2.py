@@ -5,7 +5,7 @@
 #greedy approach
 
 
-nums = [3, 2, 5] 
+nums = [3, 2, 5]
 
 def get_products_of_ints_except_at_index(int_list):
 
