@@ -27,7 +27,5 @@ change_possibilities_bottom_up(amount, coins)
 
 
 # take aways: Dynamic Programming
-# bottom up algorithm: avoid recursive approach and ultimately the potential to build up a large call stack that
-# could cause a `stack overflow error`
-#
-
+# bottom up algorithm: avoid recursive approach and ultimately the potential to
+# build up a large call stack that could cause a `stack overflow error`
