@@ -54,3 +54,5 @@ def find_rectangular_overlap(rect1, rect2):
         'width': overlap_width,
         'height': overlap_height,
     }
+
+
