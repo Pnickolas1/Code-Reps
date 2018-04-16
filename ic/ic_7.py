@@ -64,4 +64,7 @@ temp = TempTracker()
 
 temp.insert(60)
 temp.insert(80)
+temp.insert(75)
+temp.insert(64)
+print temp.mean
 print temp.historical_temps
