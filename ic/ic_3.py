@@ -48,10 +48,7 @@ def highest_product_of_3(list_of_ints):
 
     print highest_product_of_3
 
+
 inps = [-1, 5, 10, 4]
 
-
 highest_product_of_3(inps)
-
-
-print 25 *53 * 6
