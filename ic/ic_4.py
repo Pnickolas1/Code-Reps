@@ -1,7 +1,6 @@
 
 
 # calendar times, find a time when everyone is available
-
 def merge_times(meetings):
 
     # sort meetings by start time
