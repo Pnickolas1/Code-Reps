@@ -1,6 +1,5 @@
 
 
-
 def highest_product_of_three(inputs):
 
     # edge case
@@ -16,32 +15,23 @@ def highest_product_of_three(inputs):
 
     # iterate through
     for i in xrange(2, len(inputs)):
-
         current = inputs[i]
-
         highest_product_of_3 = max(highest_product_of_3,
                                    current * highest_product_of_2,
                                    current * lowest_product_of_2,
                                    )
-
         highest_product_of_2 = max(highest_product_of_2,
                                    current * highest,
                                    current * lowest,
                                    )
-
         lowest_product_of_2 = min(lowest_product_of_2,
                                   current * highest,
                                   current * lowest,
                                   )
-
-        highest = max(highest, current)
-
+        highest = max(current, highest )
         lowest = min(lowest, current)
 
     print highest_product_of_3
 
-
 inps = [-1, 5, 10, 4]
-
-
 highest_product_of_three(inps)
