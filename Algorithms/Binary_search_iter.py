@@ -19,25 +19,26 @@ def binary_search_iter(arr, ele):
     print found
 
 
-# recursive implementation
-def rec_bin_search(arr, ele):
+# recursive binary search
+
+def recur_binary_search(arr, item):
+
     # base case
     if len(arr) == 0:
-        return False
+        print False
 
     else:
-        mid = len(arr) / 2
+        midpoint = len(arr) / 2
 
-        if arr[mid] == ele:
-            return True
+        if arr[midpoint] == item:
+            print True
 
         else:
-            if ele < arr[mid]:
-                return rec_bin_search(arr[:mid], ele)
-
-
+            if item < arr[midpoint]:
+                return recur_binary_search(arr[:midpoint], item)
             else:
-                return rec_bin_search(arr[mid + 1:], ele)
+                return recur_binary_search(arr[midpoint + 1:], item)
+
 
 
 arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]

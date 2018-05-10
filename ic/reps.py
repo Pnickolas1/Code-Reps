@@ -1,37 +1,52 @@
+arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 20, 23, 24, 26, 29, 30, 35]
+stock_prices_yesterday = [10, 7, 5, 8, 11, 9]
+nums = [3, 4, 6]
 
 
-def highest_product_of_three(inputs):
 
-    # edge case
-    if len(inputs) < 3:
-        raise ValueError('this is an error')
+def binary_search_iter(arr, ele):
 
-    # storage and setup
-    highest_product_of_3 = inputs[0] * inputs[1] * inputs[2]
-    highest_product_of_2 = inputs[0] * inputs[1]
-    lowest_product_of_2 = inputs[0] * inputs[1]
-    highest = max(inputs[0], inputs[1])
-    lowest = min(inputs[0], inputs[1])
+    first = 0
+    last = len(arr) - 1
+    found = False
 
-    # iterate through
-    for i in xrange(2, len(inputs)):
-        current = inputs[i]
-        highest_product_of_3 = max(highest_product_of_3,
-                                   current * highest_product_of_2,
-                                   current * lowest_product_of_2,
-                                   )
-        highest_product_of_2 = max(highest_product_of_2,
-                                   current * highest,
-                                   current * lowest,
-                                   )
-        lowest_product_of_2 = min(lowest_product_of_2,
-                                  current * highest,
-                                  current * lowest,
-                                  )
-        highest = max(current, highest )
-        lowest = min(lowest, current)
+    while first <= last and not found:
 
-    print highest_product_of_3
+        mid = (first + mid) /2
 
-inps = [-1, 5, 10, 4]
-highest_product_of_three(inps)
+        if arr[mid] == ele:
+            found = True
+
+        if ele < arr[mid]:
+            last = mid - 1
+
+        else:
+            first = mid + 1
+
+    print found
+
+
+def recur_binary_search(arr, item):
+
+    # base case
+    if len(arr) == 0:
+        print False
+
+    else:
+        midpoint = len(arr) / 2
+
+        if arr[midpoint] == item:
+            print True
+
+        else:
+            if item < arr[midpoint]:
+                return recur_binary_search(arr[:midpoint], item)
+            else:
+                return recur_binary_search(arr[midpoint + 1:], item)
+
+
+
+
+
+
+recur_binary_search(arr, 45)
