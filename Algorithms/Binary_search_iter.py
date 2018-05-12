@@ -42,5 +42,5 @@ def recur_binary_search(arr, item):
 
 
 arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-rec_bin_search(arr, 12)
+recur_binary_search(arr, 12)
 binary_search_iter(arr, 35)
