@@ -7,6 +7,10 @@
 # recursion starts from the "end and works it's way back" (hence the need for a base case)
 # bottom up algorithms start from the bottom (or start) and work their way up
 
+# going bottom up is a common strategy for dynamic programming
+# dynamic programming are coding problems where the solution is composed of solutions to the same problem with
+# smaller inputs
+# the other common strategy is memoization
 
 # recursive approach
 def product_1_to_n(n):
