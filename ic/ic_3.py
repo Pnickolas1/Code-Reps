@@ -38,7 +38,8 @@ def highest_product_of_3(list_of_ints):
         # Do we have a new lowest product of two?
         lowest_product_of_2 = min(lowest_product_of_2,
                                   current * highest,
-                                  current * lowest)
+                                  current * lowest
+                                  )
 
         # Do we have a new highest?
         highest = max(highest, current)

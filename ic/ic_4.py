@@ -24,13 +24,9 @@ def merge_times(meetings):
 
     print merged_meetings
 
-
-
-times =  [(0, 1), (3, 5), (4, 8), (10, 12), (9, 10)]
-
-
+times = [(0, 1), (3, 5), (4, 8), (10, 12), (9, 10)]
 merge_times(times)
-
 
 # take aways - not able to working with greedy approach, first sort then greedy approach works
 # complexity O(n lg n)
+
