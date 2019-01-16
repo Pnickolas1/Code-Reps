@@ -42,5 +42,5 @@ class LinkedList(object):
 
 e1 = Element(1)
 
-print (e1)
+print(e1)
 
