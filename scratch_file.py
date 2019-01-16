@@ -39,7 +39,6 @@ class LinkedList(object):
         current = self.head
         if position > 1:
             current = current.next
-        c
 
 e1 = Element(1)
 
