@@ -57,6 +57,12 @@ class LinkedList(object):
         return None
 
     def insert(self, new_element, position):
+        """
+        Insert a new node at the given position.
+        Assume the first position is "1".
+        Inserting at position 3 means between
+        the 2nd and 3rd elements
+        """
         counter = 1
         current = self.head
         if position > 1:
@@ -106,7 +112,7 @@ print ll.head.next.next.value
 print ll.get_position(3).value
 
 # Test insert
-ll.insert(e4, 3)
+ll.insert(e4,3)
 # Should print 4 now
 print ll.get_position(3).value
 
