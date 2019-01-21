@@ -1,46 +1,30 @@
 
-class Element(object):
-    def __init__(self, value):
 
-        self.value = value
-        self.next = None
+class Starship(object):
 
+    sound = "Vrrrrrrrrrrrrrrrrrrrrr"
 
-class LinkedList(object):
+    def __init__(self):
+        self.engines = False
+        self.engine_speed = 0
+        self.shields = True
 
-    def __init__(self, head=None):
-        self.head = head
+    def engage(self):
+        self.engines = True
 
-    def append(self, new_element):
-        current = self.head
-        if self.head:
-            while current.next:
-                current = current.next
-            current.next = new_element
-        else:
-            self.head = new_element
+    def warp(self, factor):
+        self.engine_speed = 2
+        self.engine_speed *= factor
 
+    @classmethod
+    def make_sound(cls):
+        print(cls.sound)
 
-    def get_position(self, position):
-        counter = 1
-        current = self.head
-        if position < 1:
-            return None
+    @staticmethod
+    def beep():
+        print("Beep boop beep")
 
-        while current and counter <= position:
-            if counter == position:
-                return current
-            current = current.next
-            counter += 1
-        return None
-
-    def insert(self, new_element, position):
-        counter = 1
-        current = self.head
-        if position > 1:
-            current = current.next
-
-e1 = Element(1)
-
-print(e1)
+use_enterprise = Starship()
+use_enterprise.make_sound()
+Starship.make_sound()
 

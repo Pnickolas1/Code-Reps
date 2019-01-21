@@ -40,7 +40,7 @@ hash_table.store('UDACITY')
 # Should be 8568
 print hash_table.lookup('UDACITY')
 
-# Test store edge case
+# Test store edge case n
 hash_table.store('UDACIOUS')
 # Should be 8568
 print hash_table.lookup('UDACIOUS')
