@@ -1,30 +1,23 @@
+arr = [1,2,3,4,5,6,7,8,9,10]
 
+def binary_search_iter(arr, item):
 
-class Starship(object):
+    found = False
+    first = 0
+    last = len(arr) - 1
 
-    sound = "Vrrrrrrrrrrrrrrrrrrrrr"
+    while first <= last and not found:
 
-    def __init__(self):
-        self.engines = False
-        self.engine_speed = 0
-        self.shields = True
+        mid = int((first + last) /2)
+        if item == arr[mid]:
+            print(False)
 
-    def engage(self):
-        self.engines = True
+        else:
+            if item < arr[mid]:
+                last = mid - 1
+            else:
+                first = mid + 1
 
-    def warp(self, factor):
-        self.engine_speed = 2
-        self.engine_speed *= factor
+    print(found)
 
-    @classmethod
-    def make_sound(cls):
-        print(cls.sound)
-
-    @staticmethod
-    def beep():
-        print("Beep boop beep")
-
-use_enterprise = Starship()
-use_enterprise.make_sound()
-Starship.make_sound()
-
+binary_search_iter(arr, 10)
