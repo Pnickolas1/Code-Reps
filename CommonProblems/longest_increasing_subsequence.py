@@ -1,16 +1,14 @@
-from random import randint
+
+# dynamic programming
+
 random_numbers = [24, 40, 23, 98, 44, 19, 8, 31, 31, 8, 38, 0, 35, 50, 3,
                    45, 44, 41, 5, 16, 29, 25, 25, 32, 25, 20, 34, 36, 3, 19]
-
-arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
-
 
 
 def longest_increasing_subsequence(sequence):
     P = [0] * len(sequence)
     M = [0] * (len(sequence) + 1)
     L = 0
-
 
     for i in range(len(sequence)):
         lo = 1
@@ -40,5 +38,4 @@ def longest_increasing_subsequence(sequence):
 
 
 if __name__ == "__main__":
-    print("you are running this file: {}".format(__name__))
     print(longest_increasing_subsequence(random_numbers))
