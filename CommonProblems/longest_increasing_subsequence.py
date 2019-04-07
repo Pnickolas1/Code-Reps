@@ -37,5 +37,5 @@ def longest_increasing_subsequence(sequence):
     return S
 
 
-if __name__ == "__main__":
+if __name__ == "__main__":Q
     print(longest_increasing_subsequence(random_numbers))
