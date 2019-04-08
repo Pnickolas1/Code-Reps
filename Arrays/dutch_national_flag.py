@@ -6,7 +6,7 @@ RED, WHITE, BLUE = range(3)
 def dutch_flag_partition(pivot_index, arr):
 
     pivot = arr[pivot_index]
-
+    print(pivot)
     # keep the following invariants during partitioning
     # bottom group: arr[:smaller]
     # middle group: arr[smaller: larger]
@@ -29,8 +29,8 @@ def dutch_flag_partition(pivot_index, arr):
 
     return arr
 
-x = [12, 1, 1, 3, 9, 2, 4, 8, 13, 0, 6]
+x = [12, 10, 1, 1, 3, 6, 9, 2, 4, 8, 13, 0, 6]
 
 if __name__ == "__main__":
     print(os.path.basename(__file__))
-    print(dutch_flag_partition(1, x))
+    print(dutch_flag_partition(5, x))
