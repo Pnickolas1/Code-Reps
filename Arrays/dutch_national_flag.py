@@ -18,7 +18,9 @@ def dutch_flag_partition(pivot_index, arr):
     # middle group: arr[smaller: larger]
     # unclassified: arr[equal: larger]
     # top group: arr[larger:]
-    smaller, equal, larger = 0, 0, len(arr)
+    smaller = 0
+    equal = 0
+    larger = len(arr)
 
     #keep iterating as long as there is an unclassified element
     while equal < larger:
@@ -31,7 +33,10 @@ def dutch_flag_partition(pivot_index, arr):
             equal += 1
         else:   # arr[equal] > pivot
             larger -= 1
-            arr[equal], arr[larger] = arr[larger], arr[equal]
+            temp = arr[equal]
+            arr[equal] = arr[larger]
+            arr[larger] = temp
+           # arr[equal], arr[larger] = arr[larger], arr[equal]
 
     return arr
 
