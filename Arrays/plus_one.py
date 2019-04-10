@@ -18,7 +18,7 @@ def plus_one(arr):
     if arr[0] == 10:
         # need additional digit as the most significant digit (i e arr[0] has a carryout
         arr[0] = 0
-        arr.inser(0, 1)
+        arr.insert(0, 1)
 
     return arr
 
@@ -36,7 +36,8 @@ def plus_one_test(arr):
         arr.insert(0, 1)
     return arr
 
-print(plus_one_test([9,9,9]))
+#print(plus_one_test([9,9,9]))
+print(plus_one([9,9,9]))
 
 
 
