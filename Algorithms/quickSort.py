@@ -42,9 +42,6 @@ print('pre sort', random_numbers)
 quick_sort(random_numbers)
 print(random_numbers)
 
-
-
-
 # this is another way
 
 
