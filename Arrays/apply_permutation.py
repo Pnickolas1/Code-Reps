@@ -6,20 +6,21 @@ write a program that applies the permutation: perm to the the array: arr
 """
 
 
-def apply_permutation(perm, arr):
-
-    for i in range(len(arr)):
+def apply_permutation(perm, A):
+    for i in range(len(A)):
+        # Check if the element at index i has not been moved by checking if
+        # perm[i] is nonnegative.
         next = i
         while perm[next] >= 0:
-            arr[i], arr[perm[next]] = arr[perm[next]], arr[i]
+            A[i], A[perm[next]] = A[perm[next]], A[i]
             temp = perm[next]
-            # subtracts len(perm) from an array in perm to make it negative
-            # which indicates the corresponding move has been performed
+            # Subtracts len(perm) from an entry in perm to make it negative,
+            # which indicates the corresponding move has been performed.
             perm[next] -= len(perm)
             next = temp
-        # restore permp;.0¬
+    # Restore perm.
     perm[:] = [a + len(perm) for a in perm]
-    return arr
+    return A
 
 print(apply_permutation([2, 0, 1, 3], ['a', 'b', 'c', 'd']))
 
