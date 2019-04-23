@@ -5,6 +5,15 @@ random_numbers = [24, 40, 23, 98, 44, 19, 8, 31, 31, 8, 38, 0, 35, 50, 3,
 arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
 
 
+def quicksort(arr, start, end):
+
+    if start < end:
+        pindex = partition(arr, start, end)
+        quicksort(arr, start, pindex - 1)
+        quicksort(arr, pindex +1, end)
+    return arr
+
+
 def partition(arr, start, end):
 
     pivot = randint(start, end)
@@ -24,16 +33,5 @@ def partition(arr, start, end):
     arr[pindex] = temp1
     return pindex
 
-def quicksort(arr, start, end):
 
-    if start < end:
-        pindex = partition(arr, start, end)
-        quicksort(arr, start, pindex -1)
-        quicksort(arr, pindex +1, end)
-    return arr
-
-
-
-if __name__ == "__main__":
-    print(quicksort(random_numbers, 0, len(random_numbers) -1))
-
+print(quicksort(random_numbers, 0, len(random_numbers) -1))
