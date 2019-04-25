@@ -12,6 +12,29 @@ also every node will have pointers to the node before and after that node
 - you only can have access to the head and tail, everything in between you have to traverse to
 
 
+space & time
+
+search :
+time: O(n)
+space: o(1)
+
+removal methods:
+time: O(1)
+space: O(1)
+
+remove all nodes in a linked list w/ value X:
+time: O(n)
+space: O(1)
+
+insert before, insert after, insert head, insert tail
+time: O(1)
+space: O(1)
+
+
+insert @ position P:
+time: O(p) , you have to traverse to position p
+space: O(1)
+
 """
 
 
