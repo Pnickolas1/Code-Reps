@@ -2,11 +2,9 @@
 
 
 """
-
 two number sum
-    O(n) time
-    O(n) space
-
+time: O(n)
+space: O(n)
 """
 
 def twoNumberSum(array, targetSum):

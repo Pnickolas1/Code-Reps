@@ -5,17 +5,20 @@ random_numbers = [24, 40, 23, 98, 44, 19, 8, 31, 31, 8, 38, 0, 35, 50, 3,
 arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
 
 
-def two_number_sum(arr, k):
-    nums= {}
-    for num in arr:
-        target = k - num
-        if target in nums:
-            return sorted([num, target ])
+def findClosestValueinBSThelper(tree, target, param):
+    currentNode = tree
+    while currentNode is not None:
+        if abs(target - closest) > abs(target - currentNode.value):
+            closest = currentNode.value
+        if target < currentNode.value:
+            currentNode = currentNode.left
+        elif target > currentNode.value:
+            currentNode = currentNode.right
         else:
-            nums[target] = True
-
-    return []
-
+            break
+    return closest
 
 
-print(two_number_sum([3,-1,4,5,10,3,7], 2))
+
+def findClosestValueinBST(tree, target):
+    return findClosestValueinBSThelper(tree, target, float('inf'))
