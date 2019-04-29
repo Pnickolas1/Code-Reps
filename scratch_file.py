@@ -14,7 +14,21 @@ time: O(n)
 196418, 317811,
 """
 
-def twoNumberSum(arr, targetNumber):
+def selectionSort(arr):
 
+    for fillslots in range(len(arr) -1, 0, -1):
 
-print(twoNumberSum([3, 4,8, 12, 13, 30, 2], 34))
+        position_of_max = 0
+
+        for location in range(1, fillslots + 1):
+
+            if arr[location] >= arr[position_of_max]:
+                position_of_max = location
+
+        temp = arr[fillslots]
+        arr[fillslots] = arr[position_of_max]
+        arr[position_of_max] = temp
+
+    return arr
+
+print(selectionSort(random_numbers))

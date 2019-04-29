@@ -1,4 +1,5 @@
 
+import unittest
 
 
 """"
@@ -33,9 +34,18 @@ class Node:
     def depthFirstSearch(self, array):
         array.append(self.name)
         for child in self.children:
-            child.depFirstSearch(array)
+            child.depthFirstSearch(array)
         return array
 
 
 
 
+test1 = Node("a")
+
+test1.addChild("b")
+test1.addChild("c")
+test1.addChild("d")
+test1.addChild("e")
+print(test1)
+x = test1.depthFirstSearch([])
+print(x)
