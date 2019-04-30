@@ -14,21 +14,18 @@ time: O(n)
 196418, 317811,
 """
 
-def selectionSort(arr):
+def find_sum(arr, target):
 
-    for fillslots in range(len(arr) -1, 0, -1):
+    nums = {}
 
-        position_of_max = 0
+    for num in arr:
+        targetNumber = target - num
+        if targetNumber in nums:
+            return sorted([num, targetNumber])
+        else:
+            nums[num] = True
 
-        for location in range(1, fillslots + 1):
+    return []
 
-            if arr[location] >= arr[position_of_max]:
-                position_of_max = location
 
-        temp = arr[fillslots]
-        arr[fillslots] = arr[position_of_max]
-        arr[position_of_max] = temp
-
-    return arr
-
-print(selectionSort(random_numbers))
+print(find_sum([10, 8, 3, 5, 6, 7], 10))
