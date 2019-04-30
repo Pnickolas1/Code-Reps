@@ -14,18 +14,37 @@ time: O(n)
 196418, 317811,
 """
 
-def find_sum(arr, target):
+graph1 = {
+    'A': ['B', 'S'],
+    'B': ['A'],
+    'C': ['D', 'E', 'F', 'S'],
+    'D': ['C'],
+    'E': ['C', 'H'],
+    'F': ['C', 'G'],
+    'G': ['F', 'S'],
+    'H': ['E', 'G'],
+    'S': ['A', 'C', 'G']
+}
 
-    nums = {}
-
-    for num in arr:
-        targetNumber = target - num
-        if targetNumber in nums:
-            return sorted([num, targetNumber])
-        else:
-            nums[num] = True
-
-    return []
+def dfs(graph, node, visited):
+    if node not in visited:
+        visited.append(node)
+        for n in graph[node]:
+            dfs(graph, n, visited)
+    return visited
 
 
-print(find_sum([10, 8, 3, 5, 6, 7], 10))
+visited = dfs(graph1, 'A', [])
+print(visited)
+
+
+
+
+
+
+
+
+
+
+
+
