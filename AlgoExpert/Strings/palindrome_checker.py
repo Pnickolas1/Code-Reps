@@ -46,6 +46,8 @@ def isPalindrime_recursive(string, i = 0):
 
 """
 tail recursive process
+
+do some research on this **
 """
 def is_palindrome_tail_recursion(string, i = 0):
     j = len(string) - 1 - i
@@ -61,6 +63,8 @@ def is_palindrome_tail_recursion(string, i = 0):
 best solution:
 Time: O(n)
 Space: O(1)
+
+* use pointers to not use additional space *
 
 """
 
