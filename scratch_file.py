@@ -26,18 +26,23 @@ graph1 = {
     'S': ['A', 'C', 'G']
 }
 
-def dfs(graph, node, visited):
-    if node not in visited:
-        visited.append(node)
-        for n in graph[node]:
-            dfs(graph, n, visited)
-    return visited
 
 
-visited = dfs(graph1, 'A', [])
-print(visited)
 
+def two_number_sum(arr, target):
 
+    nums = {}
+
+    for num in arr:
+        targetNumber = target - num
+        if targetNumber in nums:
+            return sorted([num, targetNumber])
+        else:
+            nums[num] = True
+
+    return False
+
+print(two_number_sum([2,4,6,3,7,10,11,7], 17))
 
 
 
