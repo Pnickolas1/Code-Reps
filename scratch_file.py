@@ -14,42 +14,4 @@ time: O(n)
 196418, 317811,
 """
 
-graph1 = {
-    'A': ['B', 'S'],
-    'B': ['A'],
-    'C': ['D', 'E', 'F', 'S'],
-    'D': ['C'],
-    'E': ['C', 'H'],
-    'F': ['C', 'G'],
-    'G': ['F', 'S'],
-    'H': ['E', 'G'],
-    'S': ['A', 'C', 'G']
-}
-
-
-
-
-def two_number_sum(arr, target):
-
-    nums = {}
-
-    for num in arr:
-        targetNumber = target - num
-        if targetNumber in nums:
-            return sorted([num, targetNumber])
-        else:
-            nums[num] = True
-
-    return False
-
-print(two_number_sum([2,4,6,3,7,10,11,7], 17))
-
-
-
-
-
-
-
-
-
 
