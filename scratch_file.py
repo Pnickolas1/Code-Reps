@@ -15,3 +15,24 @@ time: O(n)
 """
 
 
+def three_number_sum(arr, target):
+    triplets = []
+    arr.sort()
+
+    for i in range(len(arr) - 2):
+        leftIdx = i + 1
+        rightIdx = len(arr) - 1
+        while leftIdx < rightIdx:
+            currentSum = arr[i] + arr[leftIdx] + arr[rightIdx]
+            if currentSum == target:
+                triplets.append([arr[i], arr[leftIdx], arr[rightIdx]])
+                leftIdx += 1
+                rightIdx -= 1
+            elif currentSum < target:
+                leftIdx += 1
+            elif currentSum > target:
+                rightIdx -= 1
+    return triplets
+
+print(three_number_sum([3, 5, 10, 3, ]))
+
