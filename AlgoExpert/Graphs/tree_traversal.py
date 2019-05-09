@@ -37,9 +37,6 @@ def postOrderTraverse(tree, array):
         array.append(tree.value)
     return array
 
-
-
-
 # in order: [1, 2, 5, 5, 10, 15, 22]
 # pre order: [10, 5, 2, 1, 5, 15, 22]
 # post order: [1, 2, 5, 5, 22, 15, 10]
