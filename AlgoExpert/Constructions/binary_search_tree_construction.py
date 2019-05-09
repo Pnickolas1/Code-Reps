@@ -78,7 +78,7 @@ class BST:
                 currentNode = currentNode.right
             else:
                 return True
-        return False
+        return Fals
 
     def remove(self, value, parentNode = None):
         """
