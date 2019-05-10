@@ -4,6 +4,8 @@ random_numbers = [24, 40, 23, 98, 44, 19, 8, 31, 31, 8, 38, 0, 35, 50, 3,
 
 arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
 
+randoms = [5, 1, 10, 4, 25, 3, 16, 9]
+
 """
 
 space: O(n)
@@ -15,24 +17,23 @@ time: O(n)
 """
 
 
-def three_number_sum(arr, target):
-    triplets = []
-    arr.sort()
+def getNewLetterCode(letter, newKey):
+    newLetterCode = ord(letter) + newKey
+    return chr(newLetterCode) if newLetterCode <= 122 else chr(96 + newLetterCode % 122)
 
-    for i in range(len(arr) - 2):
-        leftIdx = i + 1
-        rightIdx = len(arr) - 1
-        while leftIdx < rightIdx:
-            currentSum = arr[i] + arr[leftIdx] + arr[rightIdx]
-            if currentSum == target:
-                triplets.append([arr[i], arr[leftIdx], arr[rightIdx]])
-                leftIdx += 1
-                rightIdx -= 1
-            elif currentSum < target:
-                leftIdx += 1
-            elif currentSum > target:
-                rightIdx -= 1
-    return triplets
 
-print(three_number_sum([3, 5, 10, 3, ]))
 
+
+def caeser_ciper(string, key):
+
+    newKey = key % 26
+    newLetter = []
+
+    for letter in string:
+        newLetter.append(getNewLetterCode(letter, newKey))
+    return "".join(newLetter)
+
+
+
+
+print(caeser_ciper("abcd", 1))
