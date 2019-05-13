@@ -1,4 +1,27 @@
 from random import randint
+
+class BST:
+
+    def __init__(self, value):
+        self.value = value
+        self.left = None
+        self.right = None
+
+    def insert(self, value):
+        if value < self.value:
+            if self.left is None:
+                self.left = BST(value)
+            else:
+                self.left.insert(value)
+        else:
+            if self.right is None:
+                self.right = BST(value)
+            else:
+                self.right.insert(value)
+        return self
+
+test = BST(10).insert(20).insert(12).insert(8).insert(6)
+
 random_numbers = [24, 40, 23, 98, 44, 19, 8, 31, 31, 8, 38, 0, 35, 50, 3,
                    45, 44, 41, 5, 16, 29, 25, 25, 32, 25, 20, 34, 36, 3, 19]
 
@@ -16,16 +39,5 @@ time: O(n)
 196418, 317811,
 """
 
-def getNthFib(n):
 
-    firstTwo = [0, 1]
-    counter = 3
 
-    while counter <= n:
-        nextFib = firstTwo[0] + firstTwo[1]
-        firstTwo[0] = firstTwo[1]
-        firstTwo[1] = nextFib
-        counter += 1
-    return firstTwo[1] if n > 1 else firstTwo[0]
-
-print(getNthFib(10))
