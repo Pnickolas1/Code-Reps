@@ -4,7 +4,7 @@ random_numbers = [24, 40, 23, 98, 44, 19, 8, 31, 31, 8, 38, 0, 35, 50, 3,
 
 arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
 
-randoms = [5, 1, 10, 4, 25, 3, 16, 9]
+randoms = [45, 44, 41, 5, 16, 29, 25, 25, 32]
 
 """
 
@@ -16,24 +16,16 @@ time: O(n)
 196418, 317811,
 """
 
+def getNthFib(n):
 
-def getNewLetterCode(letter, newKey):
-    newLetterCode = ord(letter) + newKey
-    return chr(newLetterCode) if newLetterCode <= 122 else chr(96 + newLetterCode % 122)
+    firstTwo = [0, 1]
+    counter = 3
 
+    while counter <= n:
+        nextFib = firstTwo[0] + firstTwo[1]
+        firstTwo[0] = firstTwo[1]
+        firstTwo[1] = nextFib
+        counter += 1
+    return firstTwo[1] if n > 1 else firstTwo[0]
 
-
-
-def caeser_ciper(string, key):
-
-    newKey = key % 26
-    newLetter = []
-
-    for letter in string:
-        newLetter.append(getNewLetterCode(letter, newKey))
-    return "".join(newLetter)
-
-
-
-
-print(caeser_ciper("abcd", 1))
+print(getNthFib(10))

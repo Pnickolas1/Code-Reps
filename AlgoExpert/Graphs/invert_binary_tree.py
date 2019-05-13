@@ -41,10 +41,3 @@ def invertBinaryTree_recursive(tree):
     swapLeftAndRight(tree)
     invertBinaryTree_recursive(tree.left)
     invertBinaryTree_recursive(tree.right)
-
-
-
-
-
-
-
