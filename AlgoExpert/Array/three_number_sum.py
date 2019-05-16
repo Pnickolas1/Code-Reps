@@ -26,6 +26,7 @@ def three_number_sum(array, targetSum):
                 triplets.append([array[i], array[leftIdx], array[rightIdx]])
                 leftIdx += 1
                 rightIdx -= 1
+
             elif currentSum < targetSum:
                 leftIdx += 1
             elif currentSum > targetSum:
