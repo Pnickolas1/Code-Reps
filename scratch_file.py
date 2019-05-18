@@ -36,10 +36,3 @@ time: O(n)
 196418, 317811,
 """
 
-def nthFib(n):
-    firstTwo = [0, 1]
-    counter = 3
-    while counter <= n:
-        nextFib = firstTwo[0] + firstTwo[0]
-        
-
