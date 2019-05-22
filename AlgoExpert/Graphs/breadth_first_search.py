@@ -34,3 +34,4 @@ class Node:
             for child in current.children:
                 queue.append(child)
         return array
+
