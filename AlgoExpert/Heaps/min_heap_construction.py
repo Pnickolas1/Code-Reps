@@ -47,7 +47,6 @@ satisfies two additional properties:
     smallest value
 
 
-
 """
 
 class MinHeap:
@@ -56,31 +55,79 @@ class MinHeap:
 
     def buildHeap(self, array):
         """
+        time: O(n)
+        space: O(1)
+
         takes unsorted list and represents a heap with an array
+        you want to implement with siftdown Method
+
         :param array:
         :return:
         """
-        pass
+        firstParentIdx = (len(array) - 2) // 2
+        for currentIdx in reversed(range(firstParentIdx + 1)):
+            self.siftDown(currentIdx, len(array) - 1, array)
+        return array
 
-    def siftDown(self):
+    def siftDown(self, currentIdx, endIdx, heap):
         """
+        time: O(log n)
+        space: O(log n)
+
         * famous method of a min heap
 
 
         :return:
         """
-        pass
+        childOneIdx = currentIdx * 2 + 1
+        while childOneIdx <= endIdx:
+            childTwoIdx = currentIdx * 2 + 2 if currentIdx * 2 + 2 <= endIdx else -1
+            if childTwoIdx != 1 and heap[childTwoIdx] < heap[childOneIdx]:
+                idxToSwap = childTwoIdx
+            else:
+                idxToSwap = childOneIdx
+            if heap[idxToSwap] < heap[currentIdx]:
+                self.swap(currentIdx, idxToSwap, heap)
+                currentIdx = idxToSwap
+                childOneIdx = currentIdx * 2 + 1
+            else:
+                break
 
-    def peek(self):
-        pass
 
-    def remove(self):
-        pass
-
-    def insert(self):
+    def siftUp(self, currentIdx, heap):
         """
+        time: O(log n)
+        space: O(log n)
 
         :return:
         """
-        pass
+        parentIdx = (currentIdx - 1) // 2
+        while currentIdx > 0 and heap[currentIdx] < heap[parentIdx]:
+            self.swap(currentIdx, parentIdx, heap)
+            currentIdx = parentIdx
+            parentIdx = (currentIdx - 1) // 2
 
+
+    def peek(self):
+        return self.heap[0]
+
+    def remove(self):
+        """
+        swaps the root with the last value in the heap
+         and then popping the last value in the heap
+        :return:
+        """
+        self.swap(0, len(self.heap) - 1, self.heap)
+        valueToRemove = self.heap.pop()
+        self.siftDown(0, len(self.heap) - 1, self.heap)
+        return valueToRemove
+
+    def insert(self, value):
+        """
+        :return:
+        """
+        self.heap.append(value)
+        self.siftUp(len(self.heap) - 1, self.heap)
+
+    def swap(self, i, j, heap):
+        heap[i] , heap[j] = heap[j], heap[i]
