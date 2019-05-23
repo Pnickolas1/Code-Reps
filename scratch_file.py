@@ -36,27 +36,20 @@ time: O(n)
 196418, 317811,
 """
 
+class Node:
 
-def postOrder(tree, array):
-    if tree is not None:
-        postOrder(tree.left, array)
-        postOrder(tree.right, array)
-        array.append(tree.value)
-    return array
+    def __init__(self, value):
+        self.children = []
+        self.value = value
 
-def preOrder(tree, array):
-    if tree is not None:
-        array.append(tree.value)
-        preOrder(tree.left, array)
-        preOrder(tree.right, array)
-    return array
+    def breadthFirstSearch(self, array =[]):
+        queue = [self]
+        while len(queue) > 0:
+            current = queue.pop(0)
+            for child in current.children:
+                array.append(child)
+        return array
 
-def inOrder(tree, array):
-    if tree is not None:
-        array.append(tree.value)
-        inOrder(tree.left, array)
-        inOrder(tree.right, array)
-    return array
 
 
 

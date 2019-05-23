@@ -33,6 +33,19 @@ satisfies two additional properties:
 
     * a heap is not sorted *
 
+    * you can represent a heap beautifully in a conventional array *
+    [8, 12, 23, 17, 31, 30, 44, 102, 18]
+
+    Current node = Idx
+    -> child one = (2 * idx) + 1
+    -> child two = (2 * idx) + 2
+
+    TO find the parent node of a current node:
+    floor((idx - 1)/ 2)
+
+    - typically use a heap when you want to keep track of the greatest value or the
+    smallest value
+
 
 
 """
@@ -42,9 +55,20 @@ class MinHeap:
         self.heap = self.buildHeap(array)
 
     def buildHeap(self, array):
+        """
+        takes unsorted list and represents a heap with an array
+        :param array:
+        :return:
+        """
         pass
 
     def siftDown(self):
+        """
+        * famous method of a min heap
+
+
+        :return:
+        """
         pass
 
     def peek(self):
@@ -54,5 +78,9 @@ class MinHeap:
         pass
 
     def insert(self):
+        """
+
+        :return:
+        """
         pass
 
