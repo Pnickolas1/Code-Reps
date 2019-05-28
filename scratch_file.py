@@ -36,22 +36,19 @@ time: O(n)
 196418, 317811,
 """
 
-class Node:
 
-    def __init__(self, value):
-        self.children = []
-        self.value = value
-
-    def breadthFirstSearch(self, array =[]):
-        queue = [self]
-        while len(queue) > 0:
-            current = queue.pop(0)
-            for child in current.children:
-                array.append(child)
-        return array
+def validateBSTHelper(tree, minValue, maxValue):
+    if tree is None:
+        return True
+    if tree.value < minValue or tree.value > maxValue:
+        return False
+    leftIsValid = validateBSTHelper(tree.left, minValue, tree.value)
+    return leftIsValid and validateBSTHelper(tree.right,
+                                             tree.value,
+                                             maxValue)
 
 
 
-
-
+def validateBST(tree):
+    return validateBSTHelper(tree, float('-inf'), float('inf'))
 

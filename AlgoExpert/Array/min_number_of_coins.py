@@ -10,7 +10,8 @@ def minNumberofCoins(n, denoms):
     for denom in denoms:
         for amount in range(len(numberOfcoins)):
             if denom <= amount:
-                numberOfcoins[amount] = min(numberOfcoins[amount], 1 + numberOfcoins[amount - denom])
+                numberOfcoins[amount] = min(numberOfcoins[amount],
+                                            1 + numberOfcoins[amount - denom])
     return numberOfcoins[n] if numberOfcoins[n] != float('inf') else -1
 
 
