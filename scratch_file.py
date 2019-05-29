@@ -37,18 +37,18 @@ time: O(n)
 """
 
 
-def validateBSTHelper(tree, minValue, maxValue):
-    if tree is None:
-        return True
-    if tree.value < minValue or tree.value > maxValue:
-        return False
-    leftIsValid = validateBSTHelper(tree.left, minValue, tree.value)
-    return leftIsValid and validateBSTHelper(tree.right,
-                                             tree.value,
-                                             maxValue)
-
-
-
-def validateBST(tree):
-    return validateBSTHelper(tree, float('-inf'), float('inf'))
-
+def removeKthNodeFromEnd(head, k):
+    counter = 1
+    runner = head
+    trailer = head
+    while counter <= k:
+        runner = runner.next
+        counter += 1
+    if runner is None:
+        head.value = head.next.value
+        head.next = head.next.next
+        return
+    while runner.next is not None:
+        runner = runner.next
+        trailer = trailer.next
+    trailer.next = trailer.next.next
