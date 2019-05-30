@@ -37,18 +37,43 @@ time: O(n)
 """
 
 
-def removeKthNodeFromEnd(head, k):
-    counter = 1
-    runner = head
-    trailer = head
-    while counter <= k:
-        runner = runner.next
-        counter += 1
-    if runner is None:
-        head.value = head.next.value
-        head.next = head.next.next
-        return
-    while runner.next is not None:
-        runner = runner.next
-        trailer = trailer.next
-    trailer.next = trailer.next.next
+def waysToMakeChange(n, denoms):
+    coins = [0 for x in range(n + 1)]
+    coins[0] = 1
+    for denom in denoms:
+        for amount in range(1, len(coins)):
+             if denom <= amount:
+                 coins[amount] += coins[amount - denom]
+    return coins[n]
+
+
+print(waysToMakeChange(10, [1, 5, 10, 25]))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
