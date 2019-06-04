@@ -36,44 +36,21 @@ time: O(n)
 196418, 317811,
 """
 
+class Node:
 
-def waysToMakeChange(n, denoms):
-    coins = [0 for x in range(n + 1)]
-    coins[0] = 1
-    for denom in denoms:
-        for amount in range(1, len(coins)):
-             if denom <= amount:
-                 coins[amount] += coins[amount - denom]
-    return coins[n]
+    def __init__(self, value):
+        self.value = value
+        self.children = []
 
+    def addChild(self, value):
+        self.childrend.append(Node(value))
+        return
 
-print(waysToMakeChange(10, [1, 5, 10, 25]))
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    def breadthFirstSearch(self, array):
+        queue = [self]
+        while len(queue) > 0:
+            current = queue.pop(0)
+            array.append(current.value)
+            for child in current.children:
+                queue.append(child)
+        return array
