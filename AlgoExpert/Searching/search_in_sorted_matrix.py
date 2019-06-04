@@ -1,7 +1,7 @@
 """
 search in sorted matrix: medium
 
-search for a number in a two-dimensional array or otherwise known as a matrix
+search for a number in a two-dimensional array  or otherwise known as a matrix
 
 start at top right corner, and just eliminate or search
 
