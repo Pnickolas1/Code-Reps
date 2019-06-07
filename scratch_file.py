@@ -36,17 +36,28 @@ time: O(n)
 196418, 317811,
 """
 
-class Node:
+def preOrder(tree, array):
+    if tree is not None:
+        array.append(tree.value)
+        preOrder(tree.left, array)
+        preOrder(tree.right, array)
+    return array
 
-    def __init__(self, value):
-        self.value = value
-        self.children = []
+def postOrder(tree, array):
+    if tree is not None:
+        postOrder(tree.left, array)
+        postOrder(tree.right, array)
+        array.append(tree.value)
+    return array
 
-    def _addChild(self, value):
-        self.children.append(Node(value))
-        return self
 
-    def dfs(self, array):
-        array.append(self.value)
-        for child in self.children:
-            child.depthFirstSearch(selfp)
+def inOrder(tree,array):
+    if tree is not None:
+        inOrder(tree.left, array)
+        array.append(tree.value)
+        inOrder(tree.right, array)
+    return array
+
+
+
+
