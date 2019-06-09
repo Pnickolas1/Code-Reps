@@ -36,28 +36,13 @@ time: O(n)
 196418, 317811,
 """
 
-def preOrder(tree, array):
-    if tree is not None:
-        array.append(tree.value)
-        preOrder(tree.left, array)
-        preOrder(tree.right, array)
-    return array
 
-def postOrder(tree, array):
-    if tree is not None:
-        postOrder(tree.left, array)
-        postOrder(tree.right, array)
-        array.append(tree.value)
-    return array
-
-
-def inOrder(tree,array):
-    if tree is not None:
-        inOrder(tree.left, array)
-        array.append(tree.value)
-        inOrder(tree.right, array)
-    return array
-
-
-
-
+def minNumberOfCoins(n , denoms):
+    coins = [float('inf') for x in range(n + 1)]
+    coins[0] = 0
+    for denom in denoms:
+        for amount in range(n +1):
+            if denom <= amount:
+                coins[amount] = min(coins[amount],
+                                    1 + coins[amount - denom])
+    return coins[n]
