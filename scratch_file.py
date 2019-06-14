@@ -36,13 +36,18 @@ time: O(n)
 196418, 317811,
 """
 
+class Node:
 
-def minNumberOfCoins(n , denoms):
-    coins = [float('inf') for x in range(n + 1)]
-    coins[0] = 0
-    for denom in denoms:
-        for amount in range(n +1):
-            if denom <= amount:
-                coins[amount] = min(coins[amount],
-                                    1 + coins[amount - denom])
-    return coins[n]
+    def __init__(self, value):
+        self.value = value
+        self.children = []
+
+    def addChild(self, value):
+        self.children.append(Node(value))
+        return self
+
+    def depthFirstSearch(self, array):
+        array.append(self.value)
+        for child in self.children:
+            child.depthFirstSearch(array)
+        return array
