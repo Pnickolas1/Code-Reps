@@ -1,5 +1,8 @@
 from random import randint
 
+from class_test import Car
+
+
 class BST:
 
     def __init__(self, value):
@@ -35,19 +38,3 @@ time: O(n)
 1597, 2584, 4181, 6765, 10946, 17711, 28657, 46368, 75025, 121393,
 196418, 317811,
 """
-
-class Node:
-
-    def __init__(self, value):
-        self.value = value
-        self.children = []
-
-    def addChild(self, value):
-        self.children.append(Node(value))
-        return self
-
-    def depthFirstSearch(self, array):
-        array.append(self.value)
-        for child in self.children:
-            child.depthFirstSearch(array)
-        return array
