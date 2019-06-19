@@ -39,6 +39,15 @@ time: O(n)
 196418, 317811,
 """
 
+def minNumberOfCoins(n, denoms):
+    coins = [float('inf') for x in denoms]
+    coins[0] = 0
+    for denom in denoms:
+        for amount in range(1, len(coins)):
+            if denom <= amount:
+                coins[amount] = min(coins[amount],
+                                    coins[amount-denom] + 1
+                                    )
+    return coins[n] if coins[n] != float('inf') else -1
 
-def fourNumberSum(array):
-    pass
+
