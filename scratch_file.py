@@ -39,22 +39,28 @@ time: O(n)
 196418, 317811,
 """
 
-def fourNumberSum(array, target):
-    allPairSum = {}
-    quads = []
 
-    for i in range(1, len(array) - 1):
-        for j in range(i + 1, len(array)):
-            currentSum = array[i] + array[j]
-            difference = target - currentSum
-            if difference in allPairSum:
-                for pair in allPairSum[difference]:
-                    quads.append(pair + [array[i], array[j]])
+def buildSequence(array, sequences, currentIdx):
+    sequence = []
+    while currentIdx is not None:
+        sequence.append(array[currentIdx])
+        currentIdx = sequences[currentIdx]
+    return list(reversed(sequence))
 
-        for k in range(0, i):
-            currentSum = array[i] + array[k]
-            if currentSum not in allPairSum:
-                allPairSum[currentSum] = [[array[i], array[k]]]
-            else:
-                allPairSum[currentSum].append([array[i], array[k]])
-    return quads
+
+def maxSumIncreasingSubSequence(array):
+    sequences = [None for x in array]
+    sums = array[:]
+    maxSumIdx = 0
+    for i in range(len(array)):
+        currentNum = array[i]
+        for j in range(0, i):
+            otherNum = array[j]
+            if otherNum < currentNum and sums[j] + currentNum >= sums[i]:
+                sums[i] = currentNum + sums[j]
+                sequences[i] = j
+        if sums[i] >= sums[maxSumIdx]:
+            maxSumIdx = i
+    return [sums[maxSumIdx], buildSequence(array, sequences, maxSumIdx)]
+
+
