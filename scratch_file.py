@@ -31,6 +31,9 @@ random_numbers = [24, 40, 23, 98, 44, 19, 8, 31, 31, 8, 38, 0, 35, 50, 3,
 arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
 randoms = [45, 44, 41, 5, 16, 29, 32, 36]
 randoms_with_negative_numbers = [3, 5, -9, 1, 3, -2, 3, 4, 7, 2, -9, 6, 3, 1, -5, 4]
+x = 'ZXVVYZW'
+y = 'XKYKZPW'
+
 """
 space: O(n)
 time: O(n)
@@ -40,27 +43,21 @@ time: O(n)
 """
 
 
-def buildSequence(array, sequences, currentIdx):
-    sequence = []
-    while currentIdx is not None:
-        sequence.append(array[currentIdx])
-        currentIdx = sequences[currentIdx]
-    return list(reversed(sequence))
+def fourNumberSum(array, target):
+    allPairSum = {}
+    quads = []
+    for i in range(1, len(array) -1):
+        for j in range(i + 1, len(array)):
+            currentSum = array[i] + array[j]
+            difference = target - currentSum
+            if difference in allPairSum:
+                for pair in allPairSum[difference]:
+                    quads.append(pair + [array[i], array[j]])
 
-
-def maxSumIncreasingSubSequence(array):
-    sequences = [None for x in array]
-    sums = array[:]
-    maxSumIdx = 0
-    for i in range(len(array)):
-        currentNum = array[i]
-        for j in range(0, i):
-            otherNum = array[j]
-            if otherNum < currentNum and sums[j] + currentNum >= sums[i]:
-                sums[i] = currentNum + sums[j]
-                sequences[i] = j
-        if sums[i] >= sums[maxSumIdx]:
-            maxSumIdx = i
-    return [sums[maxSumIdx], buildSequence(array, sequences, maxSumIdx)]
-
-
+        for k in range(0, i):
+            currentSum = array[i] + array[k]
+            if currentSum not in allPairSum:
+                allPairSum[currentSum] = [[array[i], array[k]]]
+            else:
+                allPairSum[currentSum].append([array[i], array[k]])
+    return quads

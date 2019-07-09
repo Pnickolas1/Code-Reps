@@ -17,6 +17,12 @@ def longCommonSubsequence(str1, str2):
     return lcs[-1][-1]
 
 
+
+print(longCommonSubsequence('ZXVVYZW', 'XKYKZPW'))
+
+
+
+
 def buildSequence(lcs):
     sequence = []
     i = len(lcs) - 1
