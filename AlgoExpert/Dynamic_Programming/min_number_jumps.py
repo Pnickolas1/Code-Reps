@@ -8,6 +8,12 @@ x = [3, 4, 2, 1, 2, 3, 7, 1, 1, 1, 3]
 """
 
 def minNumberOfJums(array):
+    """
+    time: O(n^2)
+    space: O(n)
+    :param array:
+    :return:
+    """
     jumps = [float('inf') for a in array]
     jumps[0] = 0
     for i in range(1, len(array)):
@@ -18,6 +24,12 @@ def minNumberOfJums(array):
 
 
 def minNumberOfJumps_optimal(array):
+    """
+    Time: O(n)
+    Space: O(1)
+    :param array:
+    :return:
+    """
     if len(array) == 1:
         return 0
     jumps = 0
