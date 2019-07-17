@@ -42,22 +42,13 @@ time: O(n)
 196418, 317811,
 """
 
-
-def fourNumberSum(array, target):
-    allPairSum = {}
-    quads = []
-    for i in range(1, len(array) -1):
-        for j in range(i + 1, len(array)):
-            currentSum = array[i] + array[j]
-            difference = target - currentSum
-            if difference in allPairSum:
-                for pair in allPairSum[difference]:
-                    quads.append(pair + [array[i], array[j]])
-
-        for k in range(0, i):
-            currentSum = array[i] + array[k]
-            if currentSum not in allPairSum:
-                allPairSum[currentSum] = [[array[i], array[k]]]
-            else:
-                allPairSum[currentSum].append([array[i], array[k]])
-    return quads
+def minNumberJumps(array):
+    jumps = [float('inf') for x in array]
+    jumps[0] = 0
+    for i in range(1, len(array)):
+        for j in range(0, i):
+            if array[j] + j >= i:
+                jumps[i] = min(jumps[j],
+                               jumps[j] + 1
+                               )
+    return jumps[-1]
