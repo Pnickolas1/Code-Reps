@@ -42,13 +42,3 @@ time: O(n)
 196418, 317811,
 """
 
-def minNumberJumps(array):
-    jumps = [float('inf') for x in array]
-    jumps[0] = 0
-    for i in range(1, len(array)):
-        for j in range(0, i):
-            if array[j] + j >= i:
-                jumps[i] = min(jumps[j],
-                               jumps[j] + 1
-                               )
-    return jumps[-1]
