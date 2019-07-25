@@ -20,7 +20,8 @@ def knapsackProblem(items, capacity):
             if currentWeight > c:
                 knapsackValues[i][c] = knapsackValues[i-1][c]
             else:
-                knapsackValues[i][c] = max(knapsackValues[i - 1][c], knapsackValues[i - 1][c - currentWeight]  + currentValue)
+                knapsackValues[i][c] = max(knapsackValues[i - 1][c],
+                                           knapsackValues[i - 1][c - currentWeight] + currentValue)
     return [knapsackValues[-1][-1], getKnapSackItems(knapsackValues, items)]
 
 
