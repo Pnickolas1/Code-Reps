@@ -7,9 +7,9 @@ dynamic programming
 Time: O(nc)
 Space: O(nc)
 
+N is number of items, c is the capacity
 
 """
-
 
 def knapsackProblem(items, capacity):
     knapsackValues = [[0 for x in range(0, capacity + 1)] for y in range(0, len(items) + 1)]
@@ -39,3 +39,6 @@ def getKnapSackItems(knapsackValues, items):
         if c == 0:
             break
     return list(reversed(sequence))
+
+
+print(knapsackProblem([[1, 2], [4, 3], [5, 6], [6, 7]], 10))
