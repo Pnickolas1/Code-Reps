@@ -43,24 +43,38 @@ time: O(n)
 """
 
 
-def getKnapSackItems(knapsackValues, items):
+class JobGraph:
     pass
 
 
-def knapsackProblem(items, capacity):
-    knapsackValues = [[0 for x in range(0, capacity + 1)] for y in range(0, len(items) + 1)]
-    print(knapsackValues)
-    for i in range(1, len(items) + 1):
-        currentWeight = items[i -1][1]
-        currentValue = items[i - 1][0]
-        for c in range(0, capacity + 1):
-            if currentWeight > c:
-                knapsackValues[i][c] = knapsackValues[i - 1][c]
-            else:
-                knapsackValues[i][c] = max(knapsackValues[i - 1][c],
-                                           knapsackValues[i - 1][c - currentWeight] + currentValue
-                                           )
-    return [knapsackValues[-1][-1], getKnapSackItems(knapsackValues, items)]
+def createJobGraph(jobs, deps):
+    graph = JobGraph(jobs)
+    for prereq, job in deps:
+        graph.addPrereq(job, prereq)
+    return graph
 
 
-knapsackProblem()
+def depthFirstTraverse(node, orderedJobs):
+    if node.visited:
+        return False
+    if node.visiting:
+        return True
+    node.visiting = True
+    for prereqNode in node.prereqs:
+        containsCycle = depthFirstTraverse(prereqNode, orderedJobs)
+
+
+def getOrderedJobs(graph):
+    orderedJobs = []
+    nodes = graph.nodes
+    while len(nodes):
+        node = nodes.pop()
+        containsCycle = depthFirstTraverse(node, orderedJobs)
+        if containsCycle:
+            return []
+    return orderedJobs
+
+
+def topologicalSort(jobs, deps):
+    jobGraph = createJobGraph(jobs, deps)
+    return getOrderedJobs(jobGraph)
