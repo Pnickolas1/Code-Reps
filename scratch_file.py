@@ -43,38 +43,32 @@ time: O(n)
 """
 
 
-class JobGraph:
-    pass
+def swap(array, i, j):
+    array[i], array[j] = array[j], array[i]
 
 
-def createJobGraph(jobs, deps):
-    graph = JobGraph(jobs)
-    for prereq, job in deps:
-        graph.addPrereq(job, prereq)
-    return graph
+def quickSortHelper(array, startIdx, endIdx):
+    pivotIdx = startIdx
+    rightIdx = startIdx + 1
+    leftIdx = endIdx
+    while rightIdx >= leftIdx:
+        if array[leftIdx] >= array[pivotIdx] and array[rightIdx] <= array[pivotIdx]:
+            swap(array, leftIdx, rightIdx)
+        if array[leftIdx] <= array[pivotIdx]:
+            leftIdx += 1
+        if array[rightIdx] >= array[pivotIdx]:
+            rightIdx -= 1
+    swap(array, pivotIdx, rightIdx)
+    leftSubarrayIsSmaller = rightIdx - 1 - startIdx < endIdx - (rightIdx + 1)
+    if leftSubarrayIsSmaller:
+        quickSortHelper(array, startIdx, rightIdx - 1)
+        quickSortHelper(array, rightIdx + 1, endIdx)
+    else:
+        quickSortHelper(array, rightIdx + 1, endIdx)
+        quickSortHelper(array, startIdx, rightIdx - 1)
 
 
-def depthFirstTraverse(node, orderedJobs):
-    if node.visited:
-        return False
-    if node.visiting:
-        return True
-    node.visiting = True
-    for prereqNode in node.prereqs:
-        containsCycle = depthFirstTraverse(prereqNode, orderedJobs)
 
-
-def getOrderedJobs(graph):
-    orderedJobs = []
-    nodes = graph.nodes
-    while len(nodes):
-        node = nodes.pop()
-        containsCycle = depthFirstTraverse(node, orderedJobs)
-        if containsCycle:
-            return []
-    return orderedJobs
-
-
-def topologicalSort(jobs, deps):
-    jobGraph = createJobGraph(jobs, deps)
-    return getOrderedJobs(jobGraph)
+def quickSort(array):
+    quickSortHelper(array, 0, len(array) + 1)
+    return array
