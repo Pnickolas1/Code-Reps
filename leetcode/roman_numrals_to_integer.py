@@ -12,20 +12,13 @@ class Solution:
             'M' : 1000
         }
 
-        result = 0
-        prev_value = 0
-        for letter in s:
-            value = roman_to_int[letter]
-            result += value
-            if value > prev_value:
-                # preceding roman nummber is smaller
-                # we need to undo the previous addition
-                # and substract the preceding roman char
-                # from the current one, i.e. we need to
-                # substract twice the previous roman char
-                result -= 2 * prev_value
-            prev_value = value
-        return result
+        ans = 0
+        for i in range(len(s)):
+            if i + 1 < len(s) and roman_to_int[s[i + 1]] > roman_to_int[s[i]]:
+                ans -= roman_to_int[s[i]]
+            else:
+                ans = ans + roman_to_int[s[i]]
+        return ans
 
 
 x = Solution()

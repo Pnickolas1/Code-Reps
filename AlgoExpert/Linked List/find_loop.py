@@ -18,5 +18,6 @@ def findLoop(head):
     first = head
     while first != second:
         first = first.next
-        second.second.next
+        second = second.next
     return first
+
