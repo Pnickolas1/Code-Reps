@@ -16,7 +16,7 @@ def binary_search_iter(arr, ele):
             else:
                 first = mid + 1
 
-    print found
+    return found
 
 
 # recursive binary search
@@ -25,13 +25,13 @@ def recur_binary_search(arr, item):
 
     # base case
     if len(arr) == 0:
-        print False
+        return False
 
     else:
         midpoint = len(arr) / 2
 
         if arr[midpoint] == item:
-            print True
+            return True
 
         else:
             if item < arr[midpoint]:
