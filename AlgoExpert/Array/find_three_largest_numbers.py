@@ -17,7 +17,7 @@ def shiftAndUpdate(array, num, idx):
             array[i] = num
         else:
             array[i] = array[i + 1]
-
+    print(array)
 
 def updateLargest(threeLargest, num):
     if threeLargest[2] is None or num > threeLargest[2]:
@@ -30,10 +30,10 @@ def updateLargest(threeLargest, num):
 
 
 def findThreeLargestNumbers(array):
-
     threeLargest = [None, None, None]
     for num in array:
         updateLargest(threeLargest, num)
+        print(threeLargest)
     return threeLargest
 
 
