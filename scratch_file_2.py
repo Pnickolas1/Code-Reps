@@ -1,14 +1,6 @@
+def swap(i, j, arr):
+    arr[i], arr[j] = arr[j], arr[i]
 
-import unittest
+def swapLeftAndRight(tree):
+    tree.left, tree.right = tree.right, tree.left
 
-class TestSum(unittest.TestCase):
-
-    def test_sum(self):
-        self.assertEqual(sum([1,2,3]), 6, "Should be 6")
-
-    def test_sum_tuple(self):
-        self.assertEqual(sum((1, 2, 2,)), 6, "Should be 6 test")
-
-
-if __name__ == "__main__":
-    unittest.main()
