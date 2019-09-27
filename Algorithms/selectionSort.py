@@ -19,4 +19,3 @@ def selection_sort(arr):
 arr = [5, 12, 8, 3, 10, 11]
 selection_sort(arr)
 
-

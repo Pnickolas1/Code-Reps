@@ -12,7 +12,7 @@ Space: O(1)~
 
 
 """
-
+m
 def diskStacking(disks):
     disks.sort(key=lambda disk: disk[2])
     heights = [disk[2] for disk in disks]
