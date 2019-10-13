@@ -4,7 +4,9 @@ def swap(i, j, arr):
 def swapLeftAndRight(tree):
     tree.left, tree.right = tree.right, tree.left
 
+def insertionSort(arr):
 
 
 
-def removeKthNodeFromEnd(head, k):
+
+print(insertionSort([3,4,1,10,15,5]))
