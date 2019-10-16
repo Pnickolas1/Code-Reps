@@ -4,9 +4,7 @@ Longest String without duplication:
 Time: O(n)
 Space: O(min(n, a))
 
-
 """
-
 
 def longestSubstringWithoutDuplication(string):
     lastSeen = {}

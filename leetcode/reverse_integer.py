@@ -10,4 +10,3 @@ def reverse_integer(number):
         remaining //= 10
     return (result * -1) if number < 0 else result
 
-
