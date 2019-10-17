@@ -8,8 +8,8 @@ def is_palindrome_number(x):
     for i in range(num_digits // 2):
         if x // msd_mask != x % 10:
             return False
-        x %= 10
-        x //= msd_mask
+        x %= msd_mask # remove the most significant digit of x
+        x //= 10 # remove the least significant digit of x
         msd_mask //= 100
     return True
 
