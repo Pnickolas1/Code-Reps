@@ -13,5 +13,3 @@ def delete_duplicates(arr):
 
     return write_index
 
-
-print(delete_duplicates([1,3, 3, 5, 6, 7, 7, 7, 9, ]))
