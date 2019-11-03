@@ -20,6 +20,8 @@ def removeElement(arr, val):
             last -= 1
         else:
             start += 1
+    print(arr)
     return start
 
 
+print(removeElement([1,2,3,4,5,5,6,5], 5))
