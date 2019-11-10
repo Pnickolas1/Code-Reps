@@ -8,17 +8,10 @@ isalnum() ->
 
 isalpha() ->
 
-this can and should be done in O(1) space
-
 """
 
 
-def valid_palindrome(s):
-    if s == "":
-        return False
-
-    string = s.replace(" ", "")
-
+def valid_palindrome(string):
     start = 0
     last = len(string) - 1
     while start <= last:
@@ -33,6 +26,3 @@ def valid_palindrome(s):
             last -= 1
 
     return True
-
-
-p
