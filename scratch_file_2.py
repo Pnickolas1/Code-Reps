@@ -8,7 +8,6 @@ def swapLeftAndRight(tree):
 def swap(arr, i, j):
     arr[i], arr[j] = arr[j], arr[i]
 
-
 Rectangle = collections.namedtuple('Rectangle', ('x', 'y', 'width', 'height'))
 
 #intersect
@@ -20,33 +19,38 @@ r1 = Rectangle(1, 2, 3, 4)
 r2 = Rectangle(5, 3, 2, 4)
 
 
-def two_sorted_linked_lists(l1, l2):
+def longest_palindromic_subsequence(s):
 
-    if not l1:
-        return l2
-    if not l2:
-        return l1
-    if not l1 and not l2:
-        return None
+    def is_palindrome(s):
+        leftIdx = 0
+        rightIdx = len(s) - 1
+        while leftIdx <= rightIdx:
+            if s[leftIdx] != s[rightIdx]:
+                return False
+            leftIdx += 1
+            rightIdx -= 1
+        return True
 
-    if l1.val <= l2.val:
-        head = l1
-        l1 = l1.next
-    else:
-        head = l2
-        l2 = l2.next
+    longest = ""
 
-    curNode = head
+    for i in range(len(s)):
+        for j in range(i, len(s)):
+            substring = s[i: j + 1]
+            if len(substring) > len(longest) and is_palindrome(substring):
+                longest = substring
+    return longest
 
 
-    while l1 or l2:
-        if (l1 and not l2) or (l1 and l2 and l1.val <= l2.val):
-            curNode.next = l1
-            curNode = curNode.next
-            l1 = l1.next
-        elif (l2 and not l1) or (l1 and l2 and l1.val > l2.val):
-            curNode.next = l2
-            curNode = curNode.next
-            l2 = l2.next
 
-    return head
+print(longest_palindromic_subsequence('abababaxb'))
+
+
+
+
+
+
+
+
+
+
+

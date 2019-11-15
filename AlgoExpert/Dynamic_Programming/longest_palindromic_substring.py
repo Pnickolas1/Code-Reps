@@ -32,3 +32,4 @@ def longestPalindromicSubstring(string):
     return longest
 
 
+print(longestPalindromicSubstring('abaaasasab'))
