@@ -13,3 +13,4 @@ def delete_duplicates(arr):
 
     return write_index
 
+=

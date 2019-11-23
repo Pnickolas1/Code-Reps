@@ -26,6 +26,7 @@ def letterCombinations(digits):
     for digit in digits:
         new_combs = []
         for comb in combs:
+            print(comb)
             for letter in nums_to_letters[int(digit)]:
                 new_combs.append(comb + letter)
         combs = new_combs
