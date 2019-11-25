@@ -18,8 +18,3 @@ r4 = Rectangle(1, 2, 3, 4)
 r1 = Rectangle(1, 2, 3, 4)
 r2 = Rectangle(5, 3, 2, 4)
 
-
-
-def leve
-
-
