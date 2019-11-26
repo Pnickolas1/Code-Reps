@@ -18,3 +18,27 @@ r4 = Rectangle(1, 2, 3, 4)
 r1 = Rectangle(1, 2, 3, 4)
 r2 = Rectangle(5, 3, 2, 4)
 
+
+
+
+def moveElementToEnd(arr, target):
+
+    def swap(i, j, arr):
+        arr[i], arr[j] = arr[j], arr[i]
+
+    leftIdx = 0
+    rightIdx = len(arr) - 1
+    while leftIdx < rightIdx:
+        while leftIdx < rightIdx and arr[rightIdx] == target:
+            rightIdx -= 1
+        if arr[leftIdx] == target:
+            swap(leftIdx, rightIdx, arr)
+        leftIdx += 1
+    return arr
+
+
+
+print(moveElementToEnd([2, 1, 2, 2, 2, 3, 4, 2], 2))
+
+
+
