@@ -44,3 +44,19 @@ def recur_binary_search(arr, item):
 arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 recur_binary_search(arr, 12)
 binary_search_iter(arr, 35)
+
+
+def find_duplicates(arr1, arr2):
+    duplicates = []
+
+    while arr1 and arr2:
+        arr1_ = arr1[0]
+        if arr1_ < arr2[0]:
+            arr1.pop(0)
+        elif arr1_ > arr2[0]:
+            arr2.pop(0)
+        else:
+            duplicates.append(arr1_)
+            arr1.pop(0)
+            arr2.pop(0)
+    return duplicates

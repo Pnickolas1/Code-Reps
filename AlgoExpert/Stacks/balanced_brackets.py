@@ -33,3 +33,5 @@ def balancedBrackets(string):
             else:
                 return False
     return len(stack) == 0
+
+
