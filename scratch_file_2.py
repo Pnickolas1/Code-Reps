@@ -116,6 +116,24 @@ from collections import deque
 
 
 
+def binary_search_in_matrix(grid, sr, sc, tr, tc):
+
+    queue = deque()
+    seen = set()
+    queue.append((sr, sc, 0))
+    seen.add((sr, sc))
+
+    while queue:
+        r, c, moves = queue.popleft()
+        if r == tr and c == tc:
+            return moves
+        for (nr, nc) in ((r - 1, c), (r + 1, c), (r, c - 1), (r, c + 1)):
+            if 0 <= nr < len(grid) and 0 <= nc < len(grid[0]) and grid[nr][nc] == 1 and (nr, nc) not in seen:
+                queue.append((nr, nc, moves + 1))
+                seen.add((nr, nc))
+    return -1
+
+
 
 
 
