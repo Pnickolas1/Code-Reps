@@ -40,6 +40,7 @@ class Node:
 graph theory on two dimensional arrays (grid)
 
 """
+
 def shortestPathBinaryMatrix(grid):
     n = len(grid)
     if grid[0][0] or grid[n-1][n-1]:
@@ -52,7 +53,9 @@ def shortestPathBinaryMatrix(grid):
                 grid[x][y] = 1
                 q.append((x, y, d+1))
     return -1
+
 import collections
+
 def bfs(grid, start):
     queue = collections.deque([[start]])
     seen = set([start])
@@ -85,10 +88,23 @@ def shortestCellPath(grid, sr, sc, tr, tc):
                 seen.add((nr, nc))
     return -1
 
+from collections import deque
 
+def shortestCellPath(grid, sr, sc, tr, tc):
+    queue = deque()
+    queue.append((sr, sc, 0))
+    seen = set()
+    seen.add((sr, sc))
+    #grid[row][col]
+    while queue:
+        r, c, moves = queue.popleft()
+        if r == tr and c == tc:
+            return moves
+        for (nr, nc) in ((r-1, c), (r+1, c), (r, c-1), (r, c+1)):
+            if 0 <= nr < len(grid) and 0 <= nc < len(grid[0]) and grid[nr][nc] == 1 and (nr, nc) not in seen:
+                queue.append((nr, nc, moves + 1))
+                seen.add((nr, nc))
 
-
-
-
+    return -1
 
 
