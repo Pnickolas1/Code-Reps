@@ -21,7 +21,7 @@ def largestRange(array):
         nums[num] = False
         currentLength = 1
         left = num - 1
-        right= num + 1
+        right = num + 1
         while left in nums:
             nums[left] = False
             currentLength += 1
