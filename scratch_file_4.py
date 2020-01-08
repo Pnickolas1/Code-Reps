@@ -1,39 +1,37 @@
 
 
 
-x = [1, 2, 4, 7, 10, 11, 7, 12, 7, 7, 16, 18, 19]
-y = [4, 9]
 
-def isOutOfOrder(arr, idx, num):
-    if idx == 0:
-        return num > arr[idx + 1]
-    elif idx == len(arr) - 1:
-        return num < arr[idx - 1]
-    return num < arr[idx - 1] or num > arr[idx + 1]
+def stairCase(n):
 
-def subArraySort(arr):
-    minValueOutOfOrder = float('inf')
-    maxValueOutOfOrder = float('-inf')
+    cache = {}
 
-    for i, num in enumerate(arr):
-        if isOutOfOrder(arr, i, num):
-            minValueOutOfOrder = min(minValueOutOfOrder, num)
-            maxValueOutOfOrder = max(maxValueOutOfOrder, num)
+    def helper(n):
+        if n in cache:
+            return cache[n]
+        elif n <= 2:
+            return n
+        else:
+            x = helper(n - 1)
+            cache[n] = x
 
-    if minValueOutOfOrder == float('inf'):
-        return [-1, -1]
+    helper(5)
 
 
-    left = 0
-
-    while minValueOutOfOrder >= arr[left]:
-        left += 1
-
-    right = len(arr) -1
-    while maxValueOutOfOrder <= arr[right]:
-        right -= 1
-
-    return [left, right]
+print(stairCase(6))
 
 
-print(subArraySort(x))
+
+def inorderTraverse(root, array):
+
+    if root is not None:
+
+        inorderTraverse(root.left, array)
+        array.append(root.value)
+        inorderTraverse(root.right, array)
+    return array
+
+
+
+
+
