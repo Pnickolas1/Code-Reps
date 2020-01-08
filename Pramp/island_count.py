@@ -1,4 +1,16 @@
 
+
+"""
+
+- dfs and you can change the value in the matrix so you wouldn't visit the same node twice
+-
+
+
+
+
+"""
+
+
 def markIsland(matrix):
     if not matrix:
         return 0

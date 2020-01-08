@@ -3,6 +3,7 @@ def index_equals_value_search(arr):
     """
     - sorted *
     - minValue = float('inf')
+    - if it says binary, you should immediately think about binary search
     """
     first = 0
     last = len(arr) - 1
