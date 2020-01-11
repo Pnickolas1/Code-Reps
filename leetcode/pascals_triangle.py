@@ -14,20 +14,25 @@ Pascals Triangle
 """
 
 
+def pascals_trianlge(numRows):
+    pascal = [[1] * (i + 1) for i in range(numRows)]
+    for i in range(numRows):
+        for j in range(1, i):
+            pascal[i][j] = pascal[i - 1][j -1] + pascal[i - 1][j]
+    return pascal
 
-def triangle(n):
-    if n == 0:
-        return []
-    elif n == 1:
-        return [[1]]
-    else:
-        new_row = [1]
-        result = triangle(n-1)
-        last_row = result[-1]
-        for i in range(len(last_row)-1):
-            new_row.append(last_row[i] + last_row[i+1])
-        new_row += [1]
-        result.append(new_row)
-    return result
 
-print(triangle(5))
+print(pascals_trianlge(5))
+
+
+
+
+def pascals_triangle_II(rowIndx):
+    pascal = [1]* (rowIndx + 1)
+    print(pascal)
+    for i in range(2, rowIndx + 1):
+        for j in range(i - 1, 0, -1):
+            pascal[j] += pascal[j -1]
+    return pascal
+
+print(pascals_triangle_II(3))
