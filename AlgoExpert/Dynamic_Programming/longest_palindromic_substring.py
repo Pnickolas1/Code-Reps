@@ -33,3 +33,15 @@ def longestPalindromicSubstring(string):
 
 
 print(longestPalindromicSubstring('abaaasasab'))
+
+
+
+"""
+
+can be done with double for loop or using dynamic programming
+
+
+
+
+
+"""

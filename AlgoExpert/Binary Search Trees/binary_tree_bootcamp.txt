@@ -1,0 +1,31 @@
+
+
+
+Full trees:
+    - leaf nodes have no children
+    - OR a node that has children, has 2 children (they have to have 2 children)
+
+
+Complete trees:
+    - complete trees are binary heaps
+    - when we fill out the nodes, the nodes fall into place:
+        - top to bottom
+        - left to right
+
+
+Perfect trees:
+    - all leafs are on same level
+    - all nodes that have descendent have 2 children
+    - a perfect tree is full and also a complete tree
+
+
+PreOrder:   Node | Leftsubtree | Rightsubtree
+
+Inorder:    Leftsubtree | Node | Rightsubtree
+
+Postorder:  Leftsubtree | Rightsubtree | Node
+
+
+
+__
+
