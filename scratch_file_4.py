@@ -1,7 +1,4 @@
 
-
-
-
 def getNeighbors(r, c, matrix, visited):
     newNeighbors = []
     if r > 0 and not visited[r -1][c]:
