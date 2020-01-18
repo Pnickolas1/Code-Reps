@@ -23,6 +23,7 @@ def sameBsts(arrayOne, arrayTwo):
         return False
 
     leftOne = getSmaller(arrayOne)
+
     leftTwo = getSmaller(arrayTwo)
     rightOne = getBiggerOrEqual(arrayOne)
     rightTwo = getBiggerOrEqual(arrayTwo)
@@ -44,3 +45,10 @@ def getBiggerOrEqual(array):
         if array[i] >= array[0]:
             bigger.append(array[i])
     return bigger
+
+
+arrayOne = [10, 15, 8, 12, 94, 81, 5, 2]
+arrayTwo = [11, 8, 5, 15, 2, 12, 94, 81]
+
+
+print(sameBsts(arrayOne, arrayTwo))
