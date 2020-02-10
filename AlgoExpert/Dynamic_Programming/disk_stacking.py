@@ -12,7 +12,7 @@ Space: O(1)~
 
 
 """
-m
+
 def diskStacking(disks):
     disks.sort(key=lambda disk: disk[2])
     heights = [disk[2] for disk in disks]
@@ -28,7 +28,8 @@ def diskStacking(disks):
                     sequences[i] = j
         if heights[i] >= heights[maxHeightIdx]:
             maxHeightIdx = i
-    return buildSequence(disks, sequences, maxHeightIdx)
+    #return buildSequence(disks, sequences, maxHeightIdx)
+    return heights[maxHeightIdx]
 
 
 def areValidDimensions(o, c):
@@ -42,3 +43,7 @@ def buildSequence(array, sequences, currentIdx):
         currentIdx = sequences[currentIdx]
     # [bottom, secondBottomDisk, thirdBottomDisk]
     return list(reversed(sequence))
+
+x = [[2, 1, 2], [3, 2, 3], [2, 2, 8], [2, 3, 4], [1, 3, 1], [4, 4, 5]]
+
+print(diskStacking(x))
