@@ -31,10 +31,8 @@ def diskStacking(disks):
     #return buildSequence(disks, sequences, maxHeightIdx)
     return heights[maxHeightIdx]
 
-
 def areValidDimensions(o, c):
     return o[0] < c[0] and o[1] < c[1] and o[2] < c[2]
-
 
 def buildSequence(array, sequences, currentIdx):
     sequence = []
