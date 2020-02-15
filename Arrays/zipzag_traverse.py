@@ -11,21 +11,20 @@ time: O(n)
 
 """
 
+def isOutOfBounds(row, col, width, height):
+    return row < 0 or row > height or col < 0 or col > width
 
-def isOutOutBound(row, col, height, width):
-    return row < 0 or row > height or width < 0 or col < 0 or col > width
-
-
-def zigzagTraverse(array):
-    height = len(array) - 1
-    width = len(array[0]) - 1
-    result = []
+def zigzagTraverse(matrix):
+    height = len(matrix) - 1
+    width = len(matrix[0]) - 1
+    results = []
     row, col = 0, 0
     goingDown = True
-    while not isOutOutBound(row, col, height, width):
-        result.append(array[row][col])
+
+    while not isOutOfBounds(row, col, width, height):
+        results.append(matrix[row][col])
         if goingDown:
-            if col == 0 or row == height:
+            if row == height or col == 0:
                 goingDown = False
                 if row == height:
                     col += 1
@@ -44,7 +43,7 @@ def zigzagTraverse(array):
             else:
                 row -= 1
                 col += 1
-    return result
+    return results
 
 sampleInput = [[1,3,4,10],
                [2,5,9,11],
