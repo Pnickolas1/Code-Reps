@@ -5,7 +5,8 @@ quick select
 
 on average linear time
 
-
+time: O(n)
+space: O(n)
 
 """
 
