@@ -15,7 +15,6 @@ sampleInput = [[1,3,4,10],
                [6,8,12,15],
                [7,13,14,16]]
 wordbank = ['this', 'that', 'apple', 'is', 'apology']
-
 def swap(i, j, arr):
     arr[i], arr[j] = arr[j], arr[i]
 
@@ -46,4 +45,3 @@ def qsHelper(arr, startIdx, endIdx):
     else:
         qsHelper(arr, rightIdx + 1, endIdx)
         qsHelper(arr, startIdx, rightIdx - 1)
-
