@@ -9,8 +9,38 @@ graph = {'A': set(['B', 'C']),
          'E': set(['B', 'F']),
          'F': set(['C', 'E'])}
 z = [1, 11, 3, 0, 15, 5, 2, 4, 10, 7, 12, 6]
-sampleInput = [[1,3,4,10],
-               [2,5,9,11],
-               [6,8,12,15],
-               [7,13,14,16]]
+sampleInput = [[1, 3, 4, 10],
+               [2, 5, 9, 11],
+               [6, 8, 12, 15],
+               [7, 13, 14, 16]]
 wordbank = ['this', 'that', 'apple', 'is', 'apology']
+
+def quickSort(arr):
+    qshelper(arr, 0, len(arr) -1)
+    return arr
+
+def swap(i, j, arr):
+    arr[i], arr[j] = arr[j], arr[i]
+
+def qshelper(arr, startIdx, endIdx):
+    if startIdx >= endIdx:
+        return
+    pivot = startIdx
+    leftIdx = startIdx + 1
+    rightIdx = endIdx
+
+    while leftIdx <= rightIdx:
+        if arr[leftIdx] > arr[pivot] and arr[rightIdx] < arr[pivot]:
+            swap(leftIdx, rightIdx, arr)
+        if arr[leftIdx] <= arr[pivot]:
+            leftIdx += 1
+        if arr[rightIdx] >= arr[pivot]:
+            rightIdx -= 1
+    swap(pivot, rightIdx, arr)
+    leftIsSmaller = rightIdx - 1 - startIdx < endIdx - rightIdx - 1
+    if leftIsSmaller:
+        qshelper(arr, startIdx, rightIdx - 1)
+        qshelper(arr, rightIdx + 1, endIdx)
+    else:
+        qshelper(arr, rightIdx + 1, endIdx)
+        qshelper(arr, startIdx, rightIdx - 1)
