@@ -3,7 +3,8 @@
 multistring search
 
 
-
+time O(ns + bs)
+space O(ns)
 
 
 
