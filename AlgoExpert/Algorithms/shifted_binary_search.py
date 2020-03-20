@@ -37,3 +37,29 @@ def shiftedBinarySearchHelper(array, target, left, right):
             return shiftedBinarySearchHelper(array, target, middle + 1, right)
         else:
             return shiftedBinarySearchHelper(array, target, left, middle - 1)
+
+def shiftedBinarySearch(arr, target):
+    return binary_search(arr, target, 0, len(arr) - 1)
+
+def binary_search(arr, target, left, right):
+
+    while left <= right:
+        mid = (left + right) // 2
+        leftNum = arr[left]
+        rightNum = arr[right]
+        potentialMatch = arr[mid]
+
+
+        if target == potentialMatch:
+            return mid
+        if leftNum < potentialMatch:
+            if target < potentialMatch and target >= leftNum:
+                right = mid - 1
+            else:
+                left = mid + 1
+        else:
+            if target > potentialMatch and target <= rightNum:
+                left = mid + 1
+            else:
+                right = mid - 1
+    return -1

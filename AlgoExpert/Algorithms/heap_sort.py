@@ -21,10 +21,9 @@ def buildMaxHeap(array):
     for currentIdx in reversed(range(firstParentIdx + 1)):
         siftDown(currentIdx, len(array) - 1, array)
 
-
 def siftDown(currentIdx, endIdx, heap):
     childOneIdx = currentIdx * 2 + 1
-    while childOneIdx  <= endIdx:
+    while childOneIdx <= endIdx:
         childTwoIdx = currentIdx * 2 + 2 if currentIdx * 2 + 2 <= endIdx else -1
         if childTwoIdx > -1 and heap[childTwoIdx] > heap[childOneIdx]:
             idxToSwap = childTwoIdx

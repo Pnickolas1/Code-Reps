@@ -17,7 +17,7 @@ def multiStringSearch(bigString, smallStrings):
     trie = Trie()
     for string in smallStrings:
         trie.insert(string)
-    containedStrings =  {}
+    containedStrings = {}
     for i in range(len(bigString)):
         findSmallStringsIn(bigString, i, trie, containedStrings)
     return [string in containedStrings for string in smallStrings]
