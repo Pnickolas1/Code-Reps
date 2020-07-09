@@ -23,7 +23,7 @@ class ContinuousMedianHandler:
             self.lowers.insert(number)
         else:
             self.greaters.insert(number)
-        self.rebalanceHeaps()
+        self.x()
         self.updateMedian()
 
     def rebalanceHeaps(self):

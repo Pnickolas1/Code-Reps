@@ -28,4 +28,3 @@ class OrgInfo:
     def __init__(self, lowestCommonManager, numImportantReports):
         self.lowestCommonManager = lowestCommonManager
         self.numImportantReports = numImportantReports
-

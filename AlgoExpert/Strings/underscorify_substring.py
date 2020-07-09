@@ -36,7 +36,6 @@ def collapse(locations):
             previous = current
     return newLocations
 
-
 def underscorify(string, locations):
     locationsIdx = 0
     stringIdx = 0

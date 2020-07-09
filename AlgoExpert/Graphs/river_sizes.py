@@ -61,16 +61,3 @@ def riverSizes(matrix):
                 continue
             traverseNode(i, j, matrix, visited, sizes)
     return sizes
-
-
-
-
-
-
-
-
-
-
-
-
-

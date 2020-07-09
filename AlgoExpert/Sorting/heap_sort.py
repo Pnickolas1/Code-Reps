@@ -13,8 +13,6 @@ worst:
     time: O(n log(n))
     space: O(1)
 
-
-
 """
 
 def buildMaxHeap(arr):
