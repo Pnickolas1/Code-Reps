@@ -4,7 +4,7 @@ import sys
 
 x = [8, 12, 2, 3, 15, 5, 7]
 graph = {'A': set(['B', 'C']),
-         'B': set(['A', 'D', 'E']),+
+         'B': set(['A', 'D', 'E']),
          'C': set(['A', 'F']),
          'D': set(['B']),
          'E': set(['B', 'F']),
@@ -16,54 +16,39 @@ sampleInput = [[1, 3, 4, 10],
                [7, 13, 14, 16]]
 wordbank = ['this', 'that', 'apple', 'is', 'apology']
 
-def swap(i, j, arr):
-    arr[i], arr[j] = arr[j], arr[i]
+x = [[2, 1, 2], [3, 2, 3], [2, 2, 8], [2, 3, 4], [1, 3, 1], [4, 4, 5]]
 
 
-def getNewPattern(pattern):
-    newPattern = list(pattern)
-    if newPattern[0] == "x":
-        return newPattern
-    else:
-        return list(map(lambda char: "x" if char == "y" else "y", newPattern))
+def getPattern(substring):
+    pattern = [-1 for x in substring]
+    j = 0
+    i = 1
+    while i < len(substring):
+        if substring[i] == substring[j]:
+            pattern[i] = j
+            i += 1
+            j += 1
+        elif j > 0:
+            j = pattern[j -1] + 1
+        else:
+            i += 1
+    return pattern
 
+def doesMatch(string, substring, pattern):
+    j = 0
+    i = 0
+    while i + len(substring) - j <= len(string):
+        if substring[j] == string[i]:
+            if j == len(substring) - 1:
+                return True
+            i += 1
+            j += 1
+        elif j > 0:
+            j = pattern[j - 1] + 1
+        else:
+            i +=1
+    return False
 
-def getCounts(newPattern, counts):
-    yIdx = None
-    for i, char in enumerate(newPattern):
-        counts[char] += 1
-        if char == "y" and yIdx is None:
-            yIdx = i
-    return yIdx
-
-def patternMatcher(pattern, string):
-    if len(pattern) > len(string):
-        return []
-
-    newPattern = getNewPattern(pattern)
-    counts = {"x": 0, "y": 0}
-    didSwitch = pattern[0] != newPattern[0]
-    firstYIdx = getCounts(newPattern, counts)
-
-    if counts["y"] != 0:
-        for lenOfx in range(1, len(string)):
-            lenOfy = (len(string) - lenOfx * counts['x']) / counts['y']
-            if lenOfy <= 0 or lenOfy % 1 != 0:
-                continue
-            lenOfy = int(lenOfy)
-            yIdx = firstYIdx * lenOfx
-            x = string[:lenOfx]
-            y = string[yIdx: yIdx + lenOfy]
-            potentialMatch = map(lambda char: x if char == "x" else y, newPattern)
-            if string == "".join(potentialMatch):
-                return [x, y] if not didSwitch else [y, x]
-    else:
-        lenOfx = len(string) / counts['x']
-        if lenOfx % 1 == 0:
-            lenOfx = int(lenOfx)
-            x = string[:lenOfx]
-            potentialMatch = map(lambda char: x, newPattern)
-            if string == "".join(potentialMatch):
-                return [x, ''] if not didSwitch else ['', x]
-    return []
-
+def knuthMorrisPrattAlgorith(string, substring):
+    pattern = getPattern(substring)
+    return doesMatch(string, substring, pattern)

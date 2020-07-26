@@ -9,6 +9,7 @@ Space: O(nc)
 
 N is number of items, c is the capacity
 
+items = [value, weight]
 """
 
 def knapsackProblem(items, capacity):

@@ -10,6 +10,9 @@ KNP - string matching, does 1 string live inside anther string
 - takes advantage of patterns within strings
 
 
+
+ -- Notes* in the build pattern phase, is the prefix == suffix ?
+
 """
 
 
@@ -31,7 +34,7 @@ def buildPattern(substring):
 def doesMatch(string, substring, pattern):
     i = 0
     j = 0
-    while i +  len(substring) - j <= len(string):
+    while i + len(substring) - j <= len(string):
         if string[i] == substring[j]:
             if j == len(substring) - 1:
                 return True
