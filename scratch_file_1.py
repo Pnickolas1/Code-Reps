@@ -1,6 +1,12 @@
 
+
 import pprint
 import sys
+
+class LinkedList:
+    def __init__(self, value):
+        self.value = value
+        self.next = None
 
 x = [8, 12, 2, 3, 15, 5, 7]
 graph = {'A': set(['B', 'C']),
@@ -15,40 +21,37 @@ sampleInput = [[1, 3, 4, 10],
                [6, 8, 12, 15],
                [7, 13, 14, 16]]
 wordbank = ['this', 'that', 'apple', 'is', 'apology']
-
 x = [[2, 1, 2], [3, 2, 3], [2, 2, 8], [2, 3, 4], [1, 3, 1], [4, 4, 5]]
 
+def swap(l, r, arr):
+    arr[l], arr[r] = arr[r], arr[l]
 
-def getPattern(substring):
-    pattern = [-1 for x in substring]
-    j = 0
-    i = 1
-    while i < len(substring):
-        if substring[i] == substring[j]:
-            pattern[i] = j
-            i += 1
-            j += 1
-        elif j > 0:
-            j = pattern[j -1] + 1
-        else:
-            i += 1
-    return pattern
+def swapTree(tree):
+    tree.left. tree.right = tree.right, 
 
-def doesMatch(string, substring, pattern):
-    j = 0
-    i = 0
-    while i + len(substring) - j <= len(string):
-        if substring[j] == string[i]:
-            if j == len(substring) - 1:
-                return True
-            i += 1
-            j += 1
-        elif j > 0:
-            j = pattern[j - 1] + 1
-        else:
-            i +=1
-    return False
+def getUnvisitedNeighbors(i, j, matrix, visited):
+    unvisitedNeighbors = []
+    if i > 0 and not visited[i - 1][j]:
+        unvisitedNeighbors.append([i-1, j])
+    if i < len(matrix) - 1 and not visited[i + 1][j]:
+        unvisitedNeighbors.append([i + 1, j])
+    if j > 0 and not visited[i][j -1]:
+        unvisitedNeighbors.append([i, j-1])
+    if j < len(matrix[0]) - 1 and not visited[i][j + 1]:
+        unvisitedNeighbors.append([i, j + 1])
+    return unvisitedNeighbors
 
-def knuthMorrisPrattAlgorith(string, substring):
-    pattern = getPattern(substring)
-    return doesMatch(string, substring, pattern)
+
+
+
+def longestPalindromicSubsequence(string):
+    longest = 0
+    current = ""
+
+    for i in range(len(string)):
+        for j in range(i, len(string)):
+            currenetSubs = string[i: j + 1]
+            if len(currenetSubs) > longest and isPalindrome(currenetSubs):
+                current = currenetSubs
+                longest = len(currenetSubs)
+    return current
