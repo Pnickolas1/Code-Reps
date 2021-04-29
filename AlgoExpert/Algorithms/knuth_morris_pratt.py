@@ -36,6 +36,7 @@ def doesMatch(string, substring, pattern):
     j = 0
     while i + len(substring) - j <= len(string):
         if string[i] == substring[j]:
+
             if j == len(substring) - 1:
                 return True
             i += 1
