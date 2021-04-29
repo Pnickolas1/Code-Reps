@@ -31,8 +31,6 @@ def getUnvisitedNeighbors(i, j, matrix, visited):
         unvisitedNeighbors.append([i, j + 1])
     return unvisitedNeighbors
 
-
-
 def traverseNode(i, j, matrix, visited, sizes):
     currentRiverSize = 0
     nodesToExplore = [[i, j]]
