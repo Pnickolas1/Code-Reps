@@ -19,7 +19,6 @@ time: O(n) , n is the length of the input array
 space: O(n) space
 """
 
-
 def maxSubsetSumNoAdjacent(array):
     """
     time: O(n) , n is the length of the input array

@@ -21,4 +21,3 @@ def searchInSortedMatrix(matrix, target):
         else:
             return [row, col]
     return [-1, -1]
-
