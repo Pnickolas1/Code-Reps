@@ -10,6 +10,8 @@ kth largest in array:
 
 
 def findKthLargest(nums, k):
+
+
     def partition(left, right, pivot_index):
         pivot = nums[pivot_index]
         # 1. move pivot to end
@@ -26,6 +28,8 @@ def findKthLargest(nums, k):
         nums[right], nums[store_index] = nums[store_index], nums[right]
 
         return store_index
+
+
 
     def select(left, right, k_smallest):
         """
@@ -50,7 +54,9 @@ def findKthLargest(nums, k):
         else:
             return select(pivot_index + 1, right, k_smallest)
 
-    # kth largest is (n - k)th smallest
+
+
+    2# kth largest is (n - k)th smallest
     return select(0, len(nums) - 1, len(nums) - k)
 
 

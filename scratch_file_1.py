@@ -1,5 +1,4 @@
-
-
+import random
 import pprint
 import sys
 
@@ -41,17 +40,26 @@ def getUnvisitedNeighbors(i, j, matrix, visited):
         unvisitedNeighbors.append([i, j + 1])
     return unvisitedNeighbors
 
+def waterArea(heights):
+    if len(heights) == 0:
+        return 0
 
+    leftIdx = 0
+    rightIdx = len(heights) - 1
 
+    leftMax = heights[leftIdx]
+    rightMax = heights[rightIdx]
 
-def longestPalindromicSubsequence(string):
-    longest = 0
-    current = ""
+    surfaceArea = 0
 
-    for i in range(len(string)):
-        for j in range(i, len(string)):
-            currenetSubs = string[i: j + 1]
-            if len(currenetSubs) > longest and isPalindrome(currenetSubs):
-                current = currenetSubs
-                longest = len(currenetSubs)
-    return current
+    while leftIdx < rightIdx:
+        if heights[leftIdx] < heights[rightIdx]:
+            leftIdx += 1
+            leftMax = max(leftMax, heights[leftIdx])
+            surfaceArea += leftMax - heights[leftIdx]
+        else:
+            rightIdx -= 1
+            rightMax = max(rightMax, heights[rightIdx])
+            surfaceArea += rightMax - heights[rightIdx]
+    return surfaceArea
+

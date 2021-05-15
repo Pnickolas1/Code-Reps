@@ -1,4 +1,4 @@
-"""
+ """
 Quick Sort
 
 write a function that takes in sort

@@ -22,3 +22,4 @@ def isMonotonic(arr):
         if arr[i] > arr[i - 1]:
             isNonDecreasing = False
     return isNonIncreasing or isNonDecreasing
+``

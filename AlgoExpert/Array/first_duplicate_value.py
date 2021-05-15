@@ -19,3 +19,10 @@ def firstDuplicateValue(arr):
         seen.set(item)
     return -1
 
+def firstDuplicateValue(arr):
+    for item in arr:
+        absValue = abs(item)
+        if arr[absValue - 1] < 0:
+            return absValue
+        arr[absValue - 1] *= -1
+    return -1
