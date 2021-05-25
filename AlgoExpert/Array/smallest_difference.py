@@ -24,7 +24,6 @@ def smallest_difference(arr1, arr2):
     idxTwo = 0
 
     smallest = float("inf")
-    current = float("inf")
     smallestPair = []
 
     while idxOne < len(arr1) and idxTwo < len(arr2):

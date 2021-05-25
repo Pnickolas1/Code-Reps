@@ -56,7 +56,7 @@ def findKthLargest(nums, k):
 
 
 
-    2# kth largest is (n - k)th smallest
+    # kth largest is (n - k)th smallest
     return select(0, len(nums) - 1, len(nums) - k)
 
 
