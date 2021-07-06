@@ -15,6 +15,8 @@ class LinkedList:
         self.next = None
 
 def sumOfLinkedLists(linkedListOne, linkedListTwo):
+
+    # create a new node
     newLinkedList = LinkedList(0)
     currentNode = newLinkedList
     carry= 0

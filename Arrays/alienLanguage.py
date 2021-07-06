@@ -25,5 +25,8 @@ def alienLanguage(words, order):
             if words[i][j] != words[i + 1][j]:
                 if orderMap[words[i][j]] > orderMap[words[i + 1][j]]:
                     return False
+                # if orderMap[words[i][j]] is in order, or properly lexiographically relative i + 1, then just
+                # break and move on to the next one, there is no sense in continuing to evaluate
+                # i , vs i + 1
                 break
     return True

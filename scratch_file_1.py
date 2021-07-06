@@ -40,26 +40,28 @@ def getUnvisitedNeighbors(i, j, matrix, visited):
         unvisitedNeighbors.append([i, j + 1])
     return unvisitedNeighbors
 
-def waterArea(heights):
-    if len(heights) == 0:
-        return 0
 
-    leftIdx = 0
-    rightIdx = len(heights) - 1
+x = [1, 2, 3, 5, 5, 5, 5, 8, 10, 12, 12, 12, 15, 19, 20, 21, 21]
 
-    leftMax = heights[leftIdx]
-    rightMax = heights[rightIdx]
+x = ["helld","hellm", "helli"]
+y = "hlabcdefgijkmnopqrstuvwxyz"
 
-    surfaceArea = 0
 
-    while leftIdx < rightIdx:
-        if heights[leftIdx] < heights[rightIdx]:
-            leftIdx += 1
-            leftMax = max(leftMax, heights[leftIdx])
-            surfaceArea += leftMax - heights[leftIdx]
-        else:
-            rightIdx -= 1
-            rightMax = max(rightMax, heights[rightIdx])
-            surfaceArea += rightMax - heights[rightIdx]
-    return surfaceArea
+def alien(words, order):
 
+    orderMap = {}
+    for index, value in order:
+        orderMap[value] = index
+
+    for i in range(len(words) - 1):
+
+        for j in range(words[i]):
+
+            if j >= len(words[i + 1]):
+                return False
+
+            if words[i][j] != words[i + 1][j]:
+                if orderMap[words[i][j]] > orderMap[words[i + 1][j]]:
+                    return False
+                break
+    return True
