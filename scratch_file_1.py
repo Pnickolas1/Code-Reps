@@ -45,46 +45,21 @@ def getUnvisitedNeighbors(i, j, matrix, visited):
 
 x = [1, 2, 3, 5, 5, 5, 5, 8, 10, 12, 12, 12, 15, 19, 20, 21, 21]
 
-x = ["helld","hellm", "helli"]
-y = "hlabcdefgijkmnopqrstuvwxyz"
+
+def delete_dups(arr):
+
+    if not arr:
+        return 0
+
+    write_idx = 1
+
+    for i in range(1, len(arr)):
+        if arr[write_idx - 1] != arr[i]:
+            arr[write_idx] = arr[i]
+            write_idx += 1
+    print(arr)
+    print(arr[:write_idx])
+    return arr[:write_idx]
 
 
-def is_number_palindrome(x):
-
-    if x < 0:
-        return False
-
-    num_digits = math.floor(math.log10(x)) + 1
-    msd_mask = 10**(num_digits - 1)
-    for i in range(num_digits // 2):
-
-        if x // msd_mask != x % 10:
-            return False
-        
-        x %= msd_mask
-        x //= 10
-        msd_mask //= 100
-    return True
-
-print(is_number_palindrome(12321))
-
-
-def is_number_palindrome(x):
-
-    if x < 0:
-        return False
-
-    num_of_digits = math.floor(math.log10(x)) + 1
-    msd_mask = 10**(num_of_digits - 1)
-
-    for i in range(num_of_digits // 2):
-
-        if x // msd_mask != x % 10:
-            return False
-        
-        x %= msd_mask
-        x //= 10
-        msd_mask //= 100
-    return True
-
-    
+print(delete_dups(x))
