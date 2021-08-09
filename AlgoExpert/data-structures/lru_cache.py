@@ -1,4 +1,4 @@
-
+from collections import OrderedDict
 
 """
 LRU Cache
@@ -11,11 +11,27 @@ this should support capacity:int,
  and along with a eviction policy removing the least recently used item when capacity size is
  hit
 
-
-
-
-
 """
+
+class LRU(OrderedDict):
+
+    def __init__(self, capacity):
+        self.capacity = capacity
+        self.d = OrderedDict()
+
+    def get(self, key):
+        if key in self.d:
+            self.d.move_to_end(key)
+
+        return self.d.get(key, -1)
+
+    def put(self, key, value):
+        self.d[key] = value
+        self.get(key)
+
+        if len(self.d) > self.capacity:
+            self.d.popitem(last=False)
+
 
 
 class LRUCache:

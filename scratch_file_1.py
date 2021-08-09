@@ -1,7 +1,9 @@
 
+from AlgoExpert.Stacks.sort_stack import insertInSortedOrder
 import math
 import random
 import pprint
+from scratch_file_3 import word_count_engine
 import sys
 
 class LinkedList:
@@ -42,24 +44,6 @@ def getUnvisitedNeighbors(i, j, matrix, visited):
         unvisitedNeighbors.append([i, j + 1])
     return unvisitedNeighbors
 
-
 x = [1, 2, 3, 5, 5, 5, 5, 8, 10, 12, 12, 12, 15, 19, 20, 21, 21]
 
 
-def delete_dups(arr):
-
-    if not arr:
-        return 0
-
-    write_idx = 1
-
-    for i in range(1, len(arr)):
-        if arr[write_idx - 1] != arr[i]:
-            arr[write_idx] = arr[i]
-            write_idx += 1
-    print(arr)
-    print(arr[:write_idx])
-    return arr[:write_idx]
-
-
-print(delete_dups(x))

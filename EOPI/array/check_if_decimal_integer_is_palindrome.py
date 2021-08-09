@@ -35,5 +35,5 @@ def is_number_palindrome(x):
   return True
 
 
-print(is_number_palindrome(12321))
+print(is_number_palindrome(1234321))
 
