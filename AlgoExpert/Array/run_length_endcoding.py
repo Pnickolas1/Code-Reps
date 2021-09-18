@@ -29,3 +29,5 @@ def runLengthEncoding(string):
     encodedCharacters.append(str(currentRunLength))
     encodedCharacters.append(string[len(string) -1])
     return "".join(encodedCharacters)
+
+print(runLengthEncoding('aaaaabbcccccc'))

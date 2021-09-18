@@ -47,3 +47,55 @@ def getUnvisitedNeighbors(i, j, matrix, visited):
 x = [1, 2, 3, 5, 5, 5, 5, 8, 10, 12, 12, 12, 15, 19, 20, 21, 21]
 
 
+def findMedianSortedArray(nums1, nums2):
+
+    if len(nums2) < len(nums1):
+        nums1, nums2 = nums2, nums1
+
+    n, m = len(nums1), len(nums2)
+
+    left = 0
+    right =  n - 1
+
+    while True:
+
+        partition1 = left + (right - left) // 2
+        partition2 = (n + m) // 2 - partition1 - 2
+
+        left1 = nums1[partition1] if partition1 in range(n) else -math.inf
+        left2 = nums2[partition2] if partition2 in range(m) else -math.inf
+        right1 = nums1[partition1 + 1] if partition1 + 1 in range(n) else math.inf
+        right2 = nums2[partition2 + 1] if partition2 + 1 in range(m) else math.inf
+
+        if left1 <= right2 and left2 <= right1:
+            if (n + m) % 2 == 0:
+                return (max(left1, left2) + min(right1, right2)) / 2
+            else:
+                min(right1, right2)
+        elif left1 > right2:
+            right = partition1 - 1
+        else:
+            left = partition1 + 1
+    
+
+def runLengthEncoding(string):
+
+    encodedChars = []
+    currentRunLength = 1
+
+    for i in range(1, len(string)):
+
+        currentChar = string[i]
+        prevChar = string[i -1 ]
+
+        if currentChar != prevChar or currentRunLength == 9:
+            encodedChars.append(str(currentRunLength))
+            encodedChars.append(prevChar)
+            currentRunLength = 0
+        currentRunLength += 1
+    
+    encodedChars.append(str(currentRunLength))
+    encodedChars.append(string[len(string)- 1])
+    return "".join(encodedChars)
+
+print(runLengthEncoding('aaaaabbcccccc'))
