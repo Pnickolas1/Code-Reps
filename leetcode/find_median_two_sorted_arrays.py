@@ -1,4 +1,4 @@
-
+import math
 
 """
 find median two sorted arrays

@@ -1,6 +1,3 @@
-
-
-
 """
 
 Dutch National Flag problem

@@ -1,10 +1,8 @@
-
-from AlgoExpert.Stacks.sort_stack import insertInSortedOrder
-import math
+from collections import Counter, OrderedDict
+from heapq import heapify, heappop, heappush, heapreplace
+from os import scandir
 import random
-import pprint
-from scratch_file_3 import word_count_engine
-import sys
+import math
 
 class LinkedList:
     def __init__(self, value):
@@ -47,7 +45,7 @@ def getUnvisitedNeighbors(i, j, matrix, visited):
 x = [1, 2, 3, 5, 5, 5, 5, 8, 10, 12, 12, 12, 15, 19, 20, 21, 21]
 
 
-def findMedianSortedArray(nums1, nums2):
+def median(nums1, nums2):
 
     if len(nums2) < len(nums1):
         nums1, nums2 = nums2, nums1
@@ -55,47 +53,30 @@ def findMedianSortedArray(nums1, nums2):
     n, m = len(nums1), len(nums2)
 
     left = 0
-    right =  n - 1
+    right = n - 1
 
     while True:
 
-        partition1 = left + (right - left) // 2
-        partition2 = (n + m) // 2 - partition1 - 2
+        pointer1 = left + (right - left) // 2
+        pointer2 = (m + n) // 2 - pointer1 - 2
 
-        left1 = nums1[partition1] if partition1 in range(n) else -math.inf
-        left2 = nums2[partition2] if partition2 in range(m) else -math.inf
-        right1 = nums1[partition1 + 1] if partition1 + 1 in range(n) else math.inf
-        right2 = nums2[partition2 + 1] if partition2 + 1 in range(m) else math.inf
+        left1 = nums1[pointer1] if pointer1 in range(n) else -math.inf
+        left2 = nums2[pointer2] if pointer2 in range(m) else -math.inf
+        right1 = nums1[pointer1 + 1] if pointer1 + 1 in range(n) else math.inf
+        right2 = nums2[pointer2 + 1] if pointer2 + 1 in range(m) else math.inf
+
 
         if left1 <= right2 and left2 <= right1:
             if (n + m) % 2 == 0:
                 return (max(left1, left2) + min(right1, right2)) / 2
             else:
-                min(right1, right2)
-        elif left1 > right2:
-            right = partition1 - 1
+                return min(right1, right2)
         else:
-            left = partition1 + 1
+            if left1 > right2:
+                right = pointer1 - 1
+            else:
+                left = pointer1 + 1
+
+
+
     
-
-def runLengthEncoding(string):
-
-    encodedChars = []
-    currentRunLength = 1
-
-    for i in range(1, len(string)):
-
-        currentChar = string[i]
-        prevChar = string[i -1 ]
-
-        if currentChar != prevChar or currentRunLength == 9:
-            encodedChars.append(str(currentRunLength))
-            encodedChars.append(prevChar)
-            currentRunLength = 0
-        currentRunLength += 1
-    
-    encodedChars.append(str(currentRunLength))
-    encodedChars.append(string[len(string)- 1])
-    return "".join(encodedChars)
-
-print(runLengthEncoding('aaaaabbcccccc'))

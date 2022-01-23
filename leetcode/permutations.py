@@ -1,0 +1,13 @@
+
+
+
+"""
+
+permutations
+
+
+
+"""
+
+
+def permutationsLc()

@@ -1,7 +1,8 @@
+from collections import Counter, namedtuple
+from heapq import heapify, heappop, heappush
 from itertools import zip_longest
 import math
 import re
-import collections
 
 class LinkedList:
     def __init__(self, value):
@@ -14,26 +15,38 @@ def swapLeftAndRight(tree):
 def swap(arr, i, j):
     arr[i], arr[j] = arr[j], arr[i]
 
-Rectangle = collections.namedtuple('Rectangle', ('x', 'y', 'width', 'height'))
+Rectangle = namedtuple('Rectangle', ('x', 'y', 'width', 'height'))
 
 
 
-x = {'z', 'c', 't'}
-y = {'yike', 'greg', 'gun'}
-
-def productSum(arr):
-    sum = 1
-    for item in arr:
-        sum = sum * item
-    return sum
 
 
-def aproductExceptSelf(arr):
-    totals = [0 for x in arr]
-    for i in range(len(arr)):
-        arrExceptSelf = arr[:i] + arr[i + 1:]
-        totals[i] = productSum(arrExceptSelf)
-    return totals
+def TwoSumIv(root, target):
+
+    def inOrderTravesal(root, arr):
+        
+        if root is None:
+            return
+
+        inOrderTravesal(root.left, arr)
+        arr.append(root.val)
+        inOrderTravesal(root.right, arr)
+
+    arr = []
+    inOrderTravesal(root, arr)
+
+    l = 0
+    r = len(arr) - 1
 
 
-print(productExceptSelf([1, 2, 3, 4]))
+    while l < r:
+
+        value = arr[l] + arr[r]
+        if value == target:
+            return True
+        elif value < target:
+            l =+ 1
+        elif value > target:
+            r -= 1
+    
+    return False
