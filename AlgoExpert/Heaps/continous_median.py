@@ -1,4 +1,4 @@
-
+import heapq
 
 
 """
@@ -10,6 +10,30 @@ heaps:
 
 
 """
+
+class MedianFinder:
+
+    def __init__(self):
+        self.lo = []
+        self.high = []
+
+    def addNum(self, elem: int) -> None:
+        heapq.heappush(self.lo, -1 * elem)
+        item = -1 * heapq.heappop(self.lo)
+        heapq.heappush(self.high, item)
+        if len(self.lo) < len(self.high):
+            item = heapq.heappop(self.high)
+            heapq.heappush(self.lo, -1 * item)
+
+        return    
+    def findMedian(self) -> float:
+
+        l = len(self.high) + len(self.lo)
+
+        if l % 2 != 0:
+            return -1 * self.lo[0]
+        else:
+            return ((-1 * self.lo[0]) + self.high[0])/ 2
 
 class ContinuousMedianHandler:
     def __init__(self):

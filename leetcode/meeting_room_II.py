@@ -33,15 +33,17 @@ def minMeetingRooms(intervals):
     # Sort the meetings in increasing order of their start time.
     intervals.sort(key= lambda x: x[0])
 
-    # Add the first meeting. We have to give a new room to the first meeting.
+    # Add the first meeting. We have to give a new room to the first meeting. (use endtime)
     heapq.heappush(free_rooms, intervals[0][1])
 
     # For all the remaining meeting rooms
     for interval in intervals[1:]:
 
-        # If the room due to free up the earliest is free, assign that room to this meeting.
+        # If the room due to free up the earliest is free, 
+        # assign that room to this meeting.
 
           # minHeap         next meeting start time
+          # end time
         if free_rooms[0] <= interval[0]:
 
             # 10 AM     vs  16 (4 PM)
