@@ -4,8 +4,13 @@ optimize water distribution in a village
 
 
 """
+from cmath import cos
+from email.encoders import encode_quopri
+from email.policy import default
 import heapq
-
+from collections import defaultdict
+from msilib.schema import MsiAssembly
+from xml.etree.ElementTree import tostringlist
 
 
 class Solution:
@@ -49,3 +54,63 @@ class Solution:
                         heapq.heappush(edges_heap, (new_cost, neighbor_house))
 
         return total_cost
+
+
+
+def minCostWaterSupply(n, wells, pipes):
+
+    graph = defaultdict(list)
+
+    for index, cost in enumerate(wells):
+        graph[0].appned((cost, index + 1))
+    
+    for house1, house2, cost in pipes:
+        graph[house1].append((cost, house2))
+        graph[house2].append((cost, house1))
+
+    mstSet = set([0])
+
+    heapq.heapify(graph[0])
+    edgesHeap = graph[0]
+
+    totalCost = 0
+    while len(mstSet) < n + 1:
+        cost, nextHouse = heapq.heappop(edgesHeap)
+        if nextHouse not in mstSet:
+            mstSet.add(nextHouse)
+            totalCost += cost
+            
+            for newCost, neighborHouse in graph[nextHouse]:
+                if neighborHouse not in mstSet:
+                    heapq.heappush(edgesHeap, (newCost, neighborHouse))
+    return totalCost
+
+def minCostWater(n, wells, pipes):
+
+    graph = defaultdict(list)
+
+    for index, cost in enumerate(wells):
+        graph[0].append((cost, index + 1))
+    
+    for h1, h2, cost in pipes:
+        graph[h1].append((cost, h2))
+        graph[h2].append((cost, h1))
+
+    
+    heapq.heapify(graph[0])
+    edgesList = graph[0]
+    mst = set([0])
+
+    totalCost = 0
+
+
+    while len(mst) < n + 1:
+        newCost, newVertex = heapq.heappop(edgesList)
+        if newVertex not in mst:
+            mst.add(newVertex)
+            totalCost += newCost
+
+            for nc, nv in graph[newVertex]:
+                if nv not in mst:
+                    heapq.heappush(edgesList, (nc, nv))
+    return totalCost

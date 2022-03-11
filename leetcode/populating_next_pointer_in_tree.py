@@ -5,16 +5,11 @@ def connect_pointers(root):
 
     if not root:
         return root
-
     queue = collections.deque([root])
 
     while queue:
-        
         size = len(queue)
-
-        
         for i in range(size):
-            
             node = queue.popleft()
             
             if i < size - 1:
