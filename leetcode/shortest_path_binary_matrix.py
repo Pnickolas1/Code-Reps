@@ -1,18 +1,19 @@
 
+from collections import deque
+
 
 """
 shortest path binary matrix
 
+strong facebook question
 
 
 
 """
 
-from collections import deque
-
 
 class Solution:
-    def shortestPathBinaryMatrix(self, grid: List[List[int]]) -> int:
+    def shortestPathBinaryMatrix(self, grid) -> int:
         
         max_row = len(grid) - 1
         max_col = len(grid[0]) - 1
@@ -21,6 +22,7 @@ class Solution:
         
         # Helper function to find the neighbors of a given cell.
         def get_neighbours(row, col):
+            neighbors = []
             for row_difference, col_difference in directions:
                 new_row = row + row_difference
                 new_col = col + col_difference
@@ -28,7 +30,8 @@ class Solution:
                     continue
                 if grid[new_row][new_col] != 0:
                     continue
-                yield (new_row, new_col)
+                neighbors.append((new_row, new_col))
+            return neighbors
         
         # Check that the first and last cells are open. 
         if grid[0][0] != 0 or grid[max_row][max_col] != 0:

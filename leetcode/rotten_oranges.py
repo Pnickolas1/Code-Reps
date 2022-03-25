@@ -1,44 +1,49 @@
 from collections import deque
 
 
-def orangesRotting(grid) -> int:
-    queue = deque()
+"""
+0 representing an empty cell,
+1 representing a fresh orange, or
+2 representing a rotten orange.
 
-    # Step 1). build the initial set of rotten oranges
-    fresh_oranges = 0
+
+
+
+"""
+
+def orangesRotting(grid) -> int:
+
+    q = deque()
+    time, fresh = 0, 0
+
     ROWS, COLS = len(grid), len(grid[0])
+
+    # problem set up
     for r in range(ROWS):
         for c in range(COLS):
+            if grid[r][c] == 1:
+                fresh += 1
             if grid[r][c] == 2:
-                queue.append((r, c))
-            elif grid[r][c] == 1:
-                fresh_oranges += 1
+                q.append([r, c])
+    
+    # helper array to handle the directions
+    directions = [[0, 1], [0, -1], [1, 0], [-1, 0]]
 
-    # Mark the round / level, _i.e_ the ticker of timestamp
-    queue.append((-1, -1))
+    while q and fresh > 0:
+        for i in range(len(q)):
+            r, c = q.popleft()
+            for dr, dc in directions:
+                row, col = dr + r, dc + c
+                
+                if (row < 0 or row == ROWS or col < 0 or col == COLS):
+                    continue
 
-    # Step 2). start the rotting process via BFS
-    minutes_elapsed = -1
-    directions = [(-1, 0), (0, 1), (1, 0), (0, -1)]
-    while queue:
-        row, col = queue.popleft()
-        if row == -1:
-            # We finish one round of processing
-            minutes_elapsed += 1
-            if queue:  # to avoid the endless loop
-                queue.append((-1, -1))
-        else:
-            # this is a rotten orange
-            # then it would contaminate its neighbors
-            for d in directions:
-                neighbor_row, neighbor_col = row + d[0], col + d[1]
-                if ROWS > neighbor_row >= 0 and COLS > neighbor_col >= 0:
-                    if grid[neighbor_row][neighbor_col] == 1:
-                        # this orange would be contaminated
-                        grid[neighbor_row][neighbor_col] = 2
-                        fresh_oranges -= 1
-                        # this orange would then contaminate other oranges
-                        queue.append((neighbor_row, neighbor_col))
+                elif grid[row][col] != 1:
+                    continue
 
-    # return elapsed minutes if no fresh orange left
-    return minutes_elapsed if fresh_oranges == 0 else -1
+                grid[row][col] = 2
+                q.append([row, col])
+                fresh -= 1
+        time += 1
+    return time if fresh == 0 else -1
+
